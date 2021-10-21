@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TugasApkAbsensi</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--    login-->
+    <string name="welcome">selamat datang di</string>
+    <string name="man2">man 2 school</string>
+    <string name="nis">username</string>
+    <string name="password">password</string>
+    <string name="login">Login</string>
+
+</resources>
