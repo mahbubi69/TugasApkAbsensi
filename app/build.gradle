@@ -1,10 +1,17 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
     compileSdk 31
+
+    viewBinding {
+        enabled = true
+    }
 
     defaultConfig {
         applicationId "com.example.tugasapkabsensi"
@@ -46,4 +53,37 @@ dependencies {
     def nav_version = "2.3.5"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    //  MVVM
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    //okHttp
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.2'
+
+    //  Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3'
+
+    //dagger
+    implementation 'com.google.dagger:dagger:2.38.1'
+    kapt 'com.google.dagger:dagger-compiler:2.38.1'
+
+    //  Hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt 'com.google.dagger:hilt-compiler:2.38.1'
+    kapt "com.google.dagger:dagger-compiler:$hilt_version"
+    kapt 'com.google.dagger:dagger-android-processor:2.35.1'
+
+    //  Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    //image circular
+    implementation 'com.mikhaellopez:circularimageview:4.3.0'
+
+    //cardView
+    implementation "androidx.cardview:cardview:1.0.0"
 }

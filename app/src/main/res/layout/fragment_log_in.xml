@@ -4,78 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/silver"
     android:orientation="vertical"
     tools:context=".fragment.LogInFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/welcome"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="@color/hijau"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5sp"
-        android:text="@string/man2"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="@color/hijau"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="60dp"
-        android:src="@drawable/logo_man" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="-15dp"
+        android:background="@drawable/bg_log1"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="@string/nis"
-            android:textColor="@color/black"
-            android:textSize="15sp"
+            android:layout_marginTop="30dp"
+            android:text="@string/welcome"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="30sp"
             android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/ed_username"
-            style="@style/styleEditText"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/ed_style_bacground1" />
-
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/password"
-            android:textColor="@color/black"
-            android:textSize="15sp"
+            android:layout_marginTop="5sp"
+            android:text="@string/man2"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="30sp"
             android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="180dp"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/logo_man" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="-75dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/bg_log2"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_username"
+            style="@style/styleEditText"
+            android:layout_height="45dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/edt_style_backgrond_login"
+            android:paddingLeft="20dp"
+            android:textAlignment="center" />
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/et_password_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20sp"
+            android:layout_marginTop="25sp"
             android:layout_marginEnd="20sp"
             app:passwordToggleEnabled="true">
 
@@ -85,19 +83,22 @@
                 style="@style/styleEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ed_style_bacground1"
+                android:background="@drawable/edt_style_backgrond_login"
                 android:inputType="textPassword"
+                android:textAlignment="center"
                 android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/hijau"
-        android:text="@string/login" />
+        <Button
+            android:id="@+id/btn_log_in"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="115dp"
+            android:layout_width="wrap_content"
+            android:backgroundTint="@color/silver"
+            android:layout_height="wrap_content"
+            android:text="@string/login"/>
+    </LinearLayout>
 
 
 </LinearLayout>

@@ -4,11 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.23703703703703705" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/bg_log1.xml" value="0.262037037037037" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/bg_log2.xml" value="0.262037037037037" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/ed_style_bacground1.xml" value="0.264" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/edt_style_backgrond_login.xml" value="0.262037037037037" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/ic_launcher_background.xml" value="0.23703703703703705" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/ic_novif.xml" value="0.26944444444444443" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/activity_splass_screnn.xml" value="0.176" />
-        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_log_in.xml" value="0.264" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_dash_board.xml" value="0.20923913043478262" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_log_in.xml" value="0.2" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_register.xml" value="0.17481884057971014" />
       </map>
     </option>

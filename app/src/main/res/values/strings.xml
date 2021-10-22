@@ -8,10 +8,15 @@
     <string name="man2">man 2 school</string>
     <string name="nis">username</string>
     <string name="password">password</string>
-    <string name="login">Login</string>
+    <string name="login">sign in</string>
 
+    <!--    edt hint usr & pw-->
+    <string name="user">username</string>
+    <string name="pw">password</string>
     <!--    splass-->
     <string name="loading">Loading...</string>
     <string name="support">Support By</string>
     <string name="man2stb">man 2 situbondo</string>
+
+
 </resources>

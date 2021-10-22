@@ -8,5 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="hijau">#406343</color>
+    <color name="hijau">#649D66</color>
+
+    <!--    color btn&edt-->
+    <color name="silver">#FEF5ED</color>
 </resources>
