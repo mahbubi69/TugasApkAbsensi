@@ -1,18 +1,15 @@
 package com.example.tugasapkabsensi.fragment
 
-import android.app.Notification
-import android.app.NotificationManager
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.navigation.fragment.findNavController
 import com.example.tugasapkabsensi.R
 import com.example.tugasapkabsensi.databinding.FragmentLogInBinding
-import com.example.tugasapkabsensi.value.Value
-
 
 class LogInFragment : Fragment() {
     private var _binding: FragmentLogInBinding? = null
@@ -35,6 +32,7 @@ class LogInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         noticationManager = NotificationManagerCompat.from(requireContext())
 
+
         submitLogIn()
     }
 
@@ -42,6 +40,9 @@ class LogInFragment : Fragment() {
         binding.btnLogIn.setOnClickListener {
             val username = binding.etUsername.toString().trim()
             val password = binding.etPassword.toString().trim()
+            //coba btn
+            findNavController().navigate(R.id.action_logInFragment_to_dashBoardFragment)
+
             if (username.isEmpty()) {
                 binding.etUsername.error = "username tidak boleh kosong"
                 binding.etUsername.requestFocus()
@@ -55,17 +56,6 @@ class LogInFragment : Fragment() {
             }
         }
     }
-//    private fun notif() {
-//        val build = NotificationCompat.Builder(requireContext(), Value.CHANNEL_NOTIFICATION_1)
-//            .setSmallIcon(R.drawable.ic_novif)
-//            .setContentTitle(textTitle)
-//            .setContentText(textDesc)
-//            .setPriority(NotificationCompat.PRIORITY_HIGH)
-//            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-//        val notification: Notification = build.build()
-//        noticationManager.notify(1, notification)
-//    }
-
 
     override fun onDestroy() {
         super.onDestroy()

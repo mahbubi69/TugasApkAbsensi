@@ -23,7 +23,7 @@
         android:layout_height="150dp"
         android:layout_marginStart="131dp"
         android:layout_marginTop="8dp"
-        android:src="@drawable/logo_man" />
+        android:src="@drawable/logo_man2" />
 
     <TextView
         android:layout_width="match_parent"

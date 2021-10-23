@@ -18,5 +18,13 @@
     <string name="support">Support By</string>
     <string name="man2stb">man 2 situbondo</string>
 
+    <!--    dashboard-->
+    <string name="selamat_datang">Selamat Datang!</string>
+    <string name="nama_siswa">Senjakala Nirwana</string>
+    <string name="profil">profil</string>
+    <string name="presensi">presensi</string>
+    <string name="jadwl">jadwal</string>
+    <string name="info">info</string>
+    <string name="log_out">Log Out</string>
 
 </resources>
