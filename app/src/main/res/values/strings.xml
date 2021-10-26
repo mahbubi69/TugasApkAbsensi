@@ -23,8 +23,15 @@
     <string name="nama_siswa">Senjakala Nirwana</string>
     <string name="profil">profil</string>
     <string name="presensi">presensi</string>
-    <string name="jadwl">jadwal</string>
+    <string name="jadwal">jadwal</string>
     <string name="info">info</string>
     <string name="log_out">Log Out</string>
+
+    <!--    navigarion1_menu-->
+    <string name="homeMenu">HOME</string>
+    <string name="presensiMenu">PRESENSI</string>
+    <string name="jadwalMenu">JADWAL</string>
+    <string name="infoMenu">HOME</string>
+    <string name="profilMenu">PROFIL</string>
 
 </resources>

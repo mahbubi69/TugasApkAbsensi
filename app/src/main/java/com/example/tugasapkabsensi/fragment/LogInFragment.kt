@@ -1,6 +1,7 @@
 package com.example.tugasapkabsensi.fragment
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.fragment.findNavController
 import com.example.tugasapkabsensi.R
+import com.example.tugasapkabsensi.activity.MainActivity1
 import com.example.tugasapkabsensi.databinding.FragmentLogInBinding
 
 class LogInFragment : Fragment() {
@@ -32,7 +34,6 @@ class LogInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         noticationManager = NotificationManagerCompat.from(requireContext())
 
-
         submitLogIn()
     }
 
@@ -40,8 +41,9 @@ class LogInFragment : Fragment() {
         binding.btnLogIn.setOnClickListener {
             val username = binding.etUsername.toString().trim()
             val password = binding.etPassword.toString().trim()
-            //coba btn
-            findNavController().navigate(R.id.action_logInFragment_to_dashBoardFragment)
+
+            val inten = Intent(requireContext(), MainActivity1::class.java)
+            startActivity(inten)
 
             if (username.isEmpty()) {
                 binding.etUsername.error = "username tidak boleh kosong"

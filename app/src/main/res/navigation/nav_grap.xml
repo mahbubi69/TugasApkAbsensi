@@ -9,14 +9,5 @@
         android:id="@+id/logInFragment"
         android:name="com.example.tugasapkabsensi.fragment.LogInFragment"
         android:label="fragment_log_in"
-        tools:layout="@layout/fragment_log_in" >
-        <action
-            android:id="@+id/action_logInFragment_to_dashBoardFragment"
-            app:destination="@id/dashBoardFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/dashBoardFragment"
-        android:name="com.example.tugasapkabsensi.fragment.DashBoardFragment"
-        android:label="fragment_dash_board"
-        tools:layout="@layout/fragment_dash_board" />
+        tools:layout="@layout/fragment_log_in" />
 </navigation>
