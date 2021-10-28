@@ -39,7 +39,6 @@
                 android:src="@drawable/ic_logout"/>
 
         </LinearLayout>
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <RelativeLayout
@@ -61,7 +60,7 @@
 
         <LinearLayout
             android:id="@+id/linear1"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_below="@+id/tv_profil_siswa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

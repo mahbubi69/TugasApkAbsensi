@@ -1,14 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.InfoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:background="@color/hijau"
+        android:layout_height="60dp"
+        app:elevation="0dp">
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:textSize="30sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:text="@string/info"/>
+        </LinearLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_marginTop="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_marginStart="10dp"
+            android:id="@+id/tv_laporan_absen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/laporanAbsen"
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/tv_info_class"
+            android:layout_marginStart="130dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/kelas"
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/id_cv_form"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginRight="15dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginBottom="89dp"
+        android:backgroundTint="@color/abu_abu">
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/abu_abu"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_date_info"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="9dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tanggalInfo"
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_rv_info" />
+            
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

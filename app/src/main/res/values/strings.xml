@@ -42,5 +42,15 @@
     <string name="alamat">Alamat     : Jl.Kaliurang Timur Nomor 01</string>
     <string name="daftarRiwayat">daftar riwayat hidup</string>
 
+    <!--    info-->
+    <string name="laporanAbsen">Laporan Absen</string>
+    <string name="kelas">Kelas XII-A</string>
+    <string name="tanggalInfo">Friday,1 Juni 2021</string>
+    <string name="tercatat">RECORDED</string>
+
+
+    <!--    jadwal-->
+    <string name="PAI">Pendidikan Agama Islam</string>
+
 
 </resources>

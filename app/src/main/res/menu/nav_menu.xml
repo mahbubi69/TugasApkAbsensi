@@ -6,6 +6,7 @@
         android:icon="@drawable/home_slector"
         android:title="@string/homeMenu" />
 
+
     <item
         android:id="@+id/presensiFragment"
         android:icon="@drawable/presensi_selector"
