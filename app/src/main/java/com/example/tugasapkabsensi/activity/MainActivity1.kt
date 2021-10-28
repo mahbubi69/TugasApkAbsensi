@@ -17,7 +17,6 @@ class MainActivity1 : AppCompatActivity() {
 
         val navHost = Navigation.findNavController(this, R.id.nav_controler1)
         val navView = binding.btnNavigationNav1
-
         NavigationUI.setupWithNavController(navView, navHost)
     }
 }

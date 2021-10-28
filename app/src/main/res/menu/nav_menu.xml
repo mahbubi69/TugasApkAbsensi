@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/jadwalFramgment"
-        android:icon="@drawable/ic_home"
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/home_slector"
         android:title="@string/homeMenu" />
 
     <item
-        android:id="@+id/presnsiFragment"
-        android:icon="@drawable/ic_clok"
+        android:id="@+id/presensiFragment"
+        android:icon="@drawable/presensi_selector"
         android:title="@string/presensiMenu" />
 
     <item
         android:id="@+id/jadwalFragment"
-        android:icon="@drawable/ic_list"
+        android:icon="@drawable/jadwal_selector"
         android:title="@string/jadwalMenu" />
 
     <item
@@ -22,7 +22,7 @@
         android:title="@string/infoMenu" />
 
     <item
-        android:id="@+id/profilFragment"
-        android:icon="@drawable/ic_user"
+        android:id="@+id/profilFragment2"
+        android:icon="@drawable/user_selector"
         android:title="@string/profilMenu" />
 </menu>

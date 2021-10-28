@@ -31,7 +31,16 @@
     <string name="homeMenu">HOME</string>
     <string name="presensiMenu">PRESENSI</string>
     <string name="jadwalMenu">JADWAL</string>
-    <string name="infoMenu">HOME</string>
+    <string name="infoMenu">INFO</string>
     <string name="profilMenu">PROFIL</string>
+
+    <!--    profil siswa-->
+    <string name="profilSiswa">profil siswa</string>
+    <string name="nama_profil">  Nama  : Senjakala Nirwana</string>
+    <string name="NISN">  NISN     : 12345678900</string>
+    <string name="ttl"> TTL        : Bandung,3 Januari 2004</string>
+    <string name="alamat">Alamat     : Jl.Kaliurang Timur Nomor 01</string>
+    <string name="daftarRiwayat">daftar riwayat hidup</string>
+
 
 </resources>

@@ -8,18 +8,31 @@
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/bg_log2.xml" value="0.262037037037037" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/ed_style_bacground1.xml" value="0.264" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/edt_style_backgrond_login.xml" value="0.262037037037037" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/home_slector.xml" value="0.19907407407407407" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/ic_clok_stroke.xml" value="0.19907407407407407" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/ic_home_stroke.xml" value="0.19907407407407407" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/ic_launcher_background.xml" value="0.23703703703703705" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/ic_list_stroke.xml" value="0.19907407407407407" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/ic_logout.xml" value="0.19907407407407407" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/ic_novif.xml" value="0.26944444444444443" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/ic_setting.xml" value="0.290625" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/ic_user_stroke.xml" value="0.19907407407407407" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/jadwal_selector.xml" value="0.19907407407407407" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/presensi_selector.xml" value="0.19907407407407407" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/user_selector.xml" value="0.19907407407407407" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/activity_main1.xml" value="0.264" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/activity_main1.xml" value="0.176" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/activity_splass_screnn.xml" value="0.176" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_dash_board.xml" value="0.264" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_home.xml" value="0.1802536231884058" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_info.xml" value="0.22780797101449277" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_jadwal.xml" value="0.1802536231884058" />
-        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_log_in.xml" value="0.264" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_log_in.xml" value="0.2" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_presensi.xml" value="0.22780797101449277" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_profil.xml" value="0.264" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_register.xml" value="0.17481884057971014" />
-        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/menu/nav_menu.xml" value="0.27447916666666666" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_role.xml" value="0.22780797101449277" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/menu/nav_menu.xml" value="0.176" />
       </map>
     </option>
   </component>
