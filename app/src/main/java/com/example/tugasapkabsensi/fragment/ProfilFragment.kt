@@ -9,8 +9,6 @@ import com.example.tugasapkabsensi.R
 
 
 class ProfilFragment : Fragment() {
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,

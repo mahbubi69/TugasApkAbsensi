@@ -65,8 +65,8 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/edt_style_backgrond_login"
             android:paddingLeft="20dp"
-            android:textColor="@color/black"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/black" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/et_password_layout"
@@ -90,16 +90,12 @@
 
         <Button
             android:id="@+id/btn_log_in"
-            android:textColor="@color/black"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="115dp"
             android:layout_width="wrap_content"
-            android:backgroundTint="@color/silver"
             android:layout_height="wrap_content"
-            android:text="@string/login"/>
+            android:layout_marginStart="115dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/silver"
+            android:text="@string/login"
+            android:textColor="@color/black" />
     </LinearLayout>
-
-
-
-
 </LinearLayout>

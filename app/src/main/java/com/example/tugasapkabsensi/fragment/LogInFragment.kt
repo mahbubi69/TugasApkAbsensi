@@ -8,8 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.NotificationManagerCompat
-import androidx.navigation.fragment.findNavController
-import com.example.tugasapkabsensi.R
 import com.example.tugasapkabsensi.activity.MainActivity1
 import com.example.tugasapkabsensi.databinding.FragmentLogInBinding
 

@@ -18,7 +18,7 @@
     <string name="support">Support By</string>
     <string name="man2stb">man 2 situbondo</string>
 
-    <!--    dashboard-->
+    <!--    navigation-->
     <string name="selamat_datang">Selamat Datang!</string>
     <string name="nama_siswa">Senjakala Nirwana</string>
     <string name="profil">profil</string>
@@ -50,7 +50,11 @@
 
 
     <!--    jadwal-->
+    <string name="mata_pelajaran">Mata Pelajaran</string>
+    <string name="jadwal_hari">senin</string>
     <string name="PAI">Pendidikan Agama Islam</string>
+    <string name="B.INDO">Bahasa Indonesia</string>
+    <string name="MTK">Matematika</string>
 
 
 </resources>

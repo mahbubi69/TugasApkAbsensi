@@ -26,13 +26,15 @@
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_dash_board.xml" value="0.264" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_home.xml" value="0.1802536231884058" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_info.xml" value="0.264" />
-        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_jadwal.xml" value="0.1802536231884058" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_jadwal.xml" value="0.2" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_log_in.xml" value="0.264" />
-        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_presensi.xml" value="0.22780797101449277" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_presensi.xml" value="0.264" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_profil.xml" value="0.264" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_register.xml" value="0.17481884057971014" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_role.xml" value="0.22780797101449277" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/item_rv_info.xml" value="0.22780797101449277" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/item_rv_jadwal_mapel.xml" value="0.264" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/item_rv_presensi.xml" value="0.22780797101449277" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/titlebar.xml" value="0.22780797101449277" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/menu/nav_menu.xml" value="0.176" />
       </map>

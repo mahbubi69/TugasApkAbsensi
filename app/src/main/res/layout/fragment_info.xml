@@ -29,7 +29,6 @@
                 android:textAllCaps="true"
                 android:text="@string/info"/>
         </LinearLayout>
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
@@ -92,10 +91,11 @@
             android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_list_info_tercatat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/item_rv_info" />
-            
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
