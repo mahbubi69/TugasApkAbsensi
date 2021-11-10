@@ -14,9 +14,11 @@
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/ic_home_stroke.xml" value="0.19907407407407407" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/ic_launcher_background.xml" value="0.23703703703703705" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/ic_list_stroke.xml" value="0.19907407407407407" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/ic_lock.xml" value="0.2351851851851852" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/ic_logout.xml" value="0.19907407407407407" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/ic_novif.xml" value="0.26944444444444443" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/ic_setting.xml" value="0.290625" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/ic_user.xml" value="0.2351851851851852" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/ic_user_stroke.xml" value="0.19907407407407407" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/jadwal_selector.xml" value="0.19907407407407407" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/drawable/presensi_selector.xml" value="0.19907407407407407" />
@@ -28,7 +30,7 @@
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_home.xml" value="0.1802536231884058" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_info.xml" value="0.264" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_jadwal.xml" value="0.2" />
-        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_log_in.xml" value="0.264" />
+        <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_log_in.xml" value="0.2" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_presensi.xml" value="0.264" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_profil.xml" value="0.264" />
         <entry key="..\:/apk_belajar.android/TugasApkAbsensi/app/src/main/res/layout/fragment_register.xml" value="0.17481884057971014" />

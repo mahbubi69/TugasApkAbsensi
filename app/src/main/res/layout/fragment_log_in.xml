@@ -54,19 +54,24 @@
         android:background="@drawable/bg_log2"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/et_username"
-            style="@style/styleEditText"
-            android:layout_height="45dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/edt_style_backgrond_login"
-            android:paddingLeft="20dp"
-            android:textAlignment="center"
-            android:textColor="@color/black" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_username_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="25sp"
+            android:layout_marginEnd="20sp"
+            app:startIconDrawable="@drawable/ic_user">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_username"
+                style="@style/styleEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edt_style_backgrond_login"
+                android:inputType="text"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/et_password_layout"
@@ -75,7 +80,8 @@
             android:layout_marginStart="20sp"
             android:layout_marginTop="25sp"
             android:layout_marginEnd="20sp"
-            app:passwordToggleEnabled="true">
+            app:passwordToggleEnabled="true"
+            app:startIconDrawable="@drawable/ic_lock">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_password"
@@ -84,7 +90,6 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/edt_style_backgrond_login"
                 android:inputType="textPassword"
-                android:textAlignment="center"
                 android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
