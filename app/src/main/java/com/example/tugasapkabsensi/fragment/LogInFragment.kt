@@ -44,7 +44,7 @@ class LogInFragment : Fragment() {
             startActivity(inten)
 
             if (username.isEmpty()) {
-                binding.etUsername.error = "username tidak boleh kosong"
+                binding.etUsername.error = "nisn tidak boleh kosong"
                 binding.etUsername.requestFocus()
                 return@setOnClickListener
             }

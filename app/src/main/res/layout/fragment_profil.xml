@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.ProfilFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:background="@color/hijau"
         android:layout_height="60dp"
+        android:background="@color/hijau"
         app:elevation="0dp">
 
         <LinearLayout
-            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:textSize="30sp"
-                android:layout_marginTop="5dp"
                 android:layout_marginStart="20dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:text="@string/profil"
                 android:textAllCaps="true"
-                android:text="@string/profil"/>
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/img_logout"
-                android:layout_marginStart="228dp"
-                android:layout_marginEnd="20dp"
-                android:layout_height="25dp"
                 android:layout_width="35dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="228dp"
                 android:layout_marginTop="13dp"
-                android:src="@drawable/ic_logout"/>
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/ic_logout" />
 
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <RelativeLayout
         android:id="@+id/relative_profil"
-        android:layout_marginTop="100dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp">
 
         <TextView
             android:id="@+id/tv_profil_siswa"
@@ -53,25 +53,25 @@
             android:layout_height="wrap_content"
             android:text="@string/profilSiswa"
             android:textAlignment="center"
-            android:textStyle="bold"
-            android:textSize="30sp"
+            android:textAllCaps="true"
             android:textColor="@color/black"
-            android:textAllCaps="true"/>
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/linear1"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/tv_profil_siswa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_profil_siswa"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/img_siswa"
                 android:layout_width="100dp"
                 android:layout_height="130dp"
-                android:src="@drawable/bg_coba"
-                android:layout_marginStart="15dp"/>
+                android:layout_marginStart="15dp"
+                android:src="@drawable/bg_coba" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -81,65 +81,59 @@
 
                 <TextView
                     android:id="@+id/tv_nama_profil"
-                    android:layout_marginStart="10dp"
                     android:layout_width="match_parent"
-                    android:textSize="18sp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:text="@string/nama_profil"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tv_nisn"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="10dp"
                     android:layout_width="match_parent"
-                    android:textSize="18sp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
                     android:text="@string/NISN"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tv_ttl"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="10dp"
                     android:layout_width="match_parent"
-                    android:textSize="18sp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
                     android:text="@string/ttl"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tv_alamat"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="10dp"
                     android:layout_width="match_parent"
-                    android:textSize="18sp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
                     android:text="@string/alamat"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
             </LinearLayout>
         </LinearLayout>
 
         <TextView
-            android:layout_marginTop="50dp"
-            android:layout_below="@+id/linear1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/linear1"
+            android:layout_marginTop="50dp"
             android:text="@string/daftarRiwayat"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textStyle="bold"
             android:textColor="@color/black"
-            android:textSize="25sp"/>
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
-
-
-
-
-
-
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

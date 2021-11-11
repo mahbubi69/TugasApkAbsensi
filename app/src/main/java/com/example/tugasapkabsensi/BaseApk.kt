@@ -1,17 +1,22 @@
-package com.example.tugasapkabsensi.notiif
+package com.example.tugasapkabsensi
 
 import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
 import com.example.tugasapkabsensi.value.Value
+import dagger.hilt.android.HiltAndroidApp
+import timber.log.Timber
 
-class NotifApplication : Application() {
+@HiltAndroidApp
+class BaseApk : Application() {
     override fun onCreate() {
         super.onCreate()
+        Timber.plant(Timber.DebugTree())
         createNotification()
     }
 
+    //notification
     private fun createNotification() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             val build1 = NotificationChannel(

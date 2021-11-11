@@ -5,12 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.tugasapkabsensi.R
-import com.example.tugasapkabsensi.databinding.FragmentInfoBinding
+import com.example.tugasapkabsensi.databinding.FragmentProsesPresensiBinding
 
 
-class InfoFragment : Fragment() {
-    private var _binding: FragmentInfoBinding? = null
+class ProsesPresensiFragment : Fragment() {
+    private var _binding: FragmentProsesPresensiBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -18,7 +17,7 @@ class InfoFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentInfoBinding.inflate(inflater, container, false)
+        _binding = FragmentProsesPresensiBinding.inflate(inflater, container, false)
         return binding.root
     }
 

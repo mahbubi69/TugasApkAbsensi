@@ -23,6 +23,7 @@
     <string name="nama_siswa">Senjakala Nirwana</string>
     <string name="profil">profil</string>
     <string name="presensi">presensi</string>
+    <string name="mapel_presensi">mapel presensi</string>
     <string name="jadwal">jadwal</string>
     <string name="info">info</string>
     <string name="log_out">Log Out</string>
@@ -55,6 +56,13 @@
     <string name="PAI">Pendidikan Agama Islam</string>
     <string name="B.INDO">Bahasa Indonesia</string>
     <string name="MTK">Matematika</string>
+
+
+    <!--    proses present-->
+    <string name="tanggal_proses_absesni">tanggal absen</string>
+    <string name="jam_proses_absesni">jam absen</string>
+    <string name="info_proses_present">present</string>
+
 
 
 </resources>

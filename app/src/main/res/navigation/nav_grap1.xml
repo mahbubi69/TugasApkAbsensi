@@ -14,7 +14,11 @@
         android:id="@+id/presensiFragment"
         android:name="com.example.tugasapkabsensi.fragment.PresensiFragment"
         android:label="fragment_presensi"
-        tools:layout="@layout/fragment_presensi" />
+        tools:layout="@layout/fragment_presensi" >
+        <action
+            android:id="@+id/action_presensiFragment_to_detailPresensiFragment"
+            app:destination="@id/detailPresensiFragment" />
+    </fragment>
     <fragment
         android:id="@+id/jadwalFragment"
         android:name="com.example.tugasapkabsensi.fragment.JadwalFragment"
@@ -30,4 +34,9 @@
         android:name="com.example.tugasapkabsensi.fragment.ProfilFragment"
         android:label="fragment_profil"
         tools:layout="@layout/fragment_profil" />
+    <fragment
+        android:id="@+id/detailPresensiFragment"
+        android:name="com.example.tugasapkabsensi.fragment.ProsesPresensiFragment"
+        android:label="fragment_detail_presensi"
+        tools:layout="@layout/fragment_proses_presensi" />
 </navigation>
