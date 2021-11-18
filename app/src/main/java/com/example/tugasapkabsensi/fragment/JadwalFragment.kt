@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.tugasapkabsensi.R
 import com.example.tugasapkabsensi.databinding.FragmentJadwalBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class JadwalFragment : Fragment() {
 
     private var _binding: FragmentJadwalBinding? = null

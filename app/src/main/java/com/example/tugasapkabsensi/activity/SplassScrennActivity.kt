@@ -5,8 +5,10 @@ import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.tugasapkabsensi.R
+import dagger.hilt.android.AndroidEntryPoint
 import java.lang.ref.WeakReference
 
+@AndroidEntryPoint
 class SplassScrennActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

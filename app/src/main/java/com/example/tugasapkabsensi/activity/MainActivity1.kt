@@ -6,7 +6,9 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.example.tugasapkabsensi.R
 import com.example.tugasapkabsensi.databinding.ActivityMain1Binding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity1 : AppCompatActivity() {
 
     private lateinit var binding: ActivityMain1Binding

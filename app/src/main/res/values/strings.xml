@@ -63,6 +63,8 @@
     <string name="jam_proses_absesni">jam absen</string>
     <string name="info_proses_present">present</string>
 
+    <!-- default   prefens-->
+    <string name="keperluan_token">tokenPrefens</string>
 
 
 </resources>

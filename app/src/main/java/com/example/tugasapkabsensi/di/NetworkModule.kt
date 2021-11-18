@@ -1,6 +1,7 @@
 package com.example.tugasapkabsensi.di
 
 
+import com.example.tugasapkabsensi.restApi.UserService
 import com.example.tugasapkabsensi.value.Value
 import dagger.Module
 import dagger.Provides
@@ -30,4 +31,9 @@ class NetworkModule {
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()
+
+    @Provides
+    fun providePostUserService(retrofit: Retrofit): UserService {
+        return retrofit.create(UserService::class.java)
+    }
 }
