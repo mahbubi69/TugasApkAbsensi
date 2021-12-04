@@ -10,7 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/hijau"
+        android:background="@color/green_btn"
         app:elevation="0dp">
 
         <LinearLayout
@@ -25,8 +25,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
                 android:text="@string/jadwal"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="30sp"
                 android:textStyle="bold" />
         </LinearLayout>

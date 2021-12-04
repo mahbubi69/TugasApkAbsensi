@@ -9,7 +9,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/hijau"
+        android:background="@color/green_btn"
         app:elevation="0dp">
 
         <LinearLayout
@@ -24,8 +24,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
                 android:text="@string/profil"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
@@ -33,7 +32,7 @@
                 android:id="@+id/img_logout"
                 android:layout_width="35dp"
                 android:layout_height="25dp"
-                android:layout_marginStart="228dp"
+                android:layout_marginStart="180dp"
                 android:layout_marginTop="13dp"
                 android:layout_marginEnd="20dp"
                 android:src="@drawable/ic_logout" />
@@ -45,37 +44,26 @@
         android:id="@+id/relative_profil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp">
-
-        <TextView
-            android:id="@+id/tv_profil_siswa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/profilSiswa"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+        android:layout_marginTop="90dp">
 
         <LinearLayout
             android:id="@+id/linear1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_profil_siswa"
             android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/img_siswa"
                 android:layout_width="100dp"
                 android:layout_height="130dp"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="150dp"
                 android:src="@drawable/bg_coba" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:orientation="vertical">
 
 
@@ -84,7 +72,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="@string/nama_profil"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -94,7 +81,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="@string/NISN"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -104,7 +90,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="@string/ttl"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -114,24 +99,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="@string/alamat"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
             </LinearLayout>
         </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/linear1"
-            android:layout_marginTop="50dp"
-            android:text="@string/daftarRiwayat"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold" />
 
     </RelativeLayout>
 

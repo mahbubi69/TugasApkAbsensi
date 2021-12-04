@@ -16,6 +16,7 @@ import com.example.tugasapkabsensi.mvvm.LogInViewModel
 import com.example.tugasapkabsensi.restApi.model.LogInSubmitSiswa
 import com.example.tugasapkabsensi.restApi.response.ApiResponseSiswa
 import com.example.tugasapkabsensi.util.SharedPrefencSiswa
+import com.example.tugasapkabsensi.value.Value
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -67,15 +68,10 @@ class LogInFragment : Fragment() {
                 binding.etPassword.requestFocus()
                 return@setOnClickListener
             }
-
             initiateLogInSiswa(logInSubmitSiswa)
         }
 
     }
-
-//    private fun setToken(tokenSiswa: String) {
-//        val tokenSiswa =
-//    }
 
     private fun initiateLogInSiswa(submitSiswa: LogInSubmitSiswa) {
         viewModel.logInSiswaVm(submitSiswa).observe(viewLifecycleOwner, Observer { logIn ->
@@ -87,7 +83,7 @@ class LogInFragment : Fragment() {
                 is ApiResponseSiswa.Succes -> {
                     showLoading(false)
 
-                    sharedPrefencSiswa.setTokenSiswa(logIn.data.token)
+                    sharedPrefencSiswa.setTokenSiswa(Value.KEY_BASE_TOKEN, logIn.data.token)
                     val inten = Intent(requireContext(), MainActivity1::class.java)
                     startActivity(inten)
 

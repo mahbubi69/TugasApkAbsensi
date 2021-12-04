@@ -25,11 +25,6 @@
         android:label="fragment_jadwal"
         tools:layout="@layout/fragment_jadwal" />
     <fragment
-        android:id="@+id/infoFragment"
-        android:name="com.example.tugasapkabsensi.fragment.InfoFragment"
-        android:label="fragment_info"
-        tools:layout="@layout/fragment_info" />
-    <fragment
         android:id="@+id/profilFragment2"
         android:name="com.example.tugasapkabsensi.fragment.ProfilFragment"
         android:label="fragment_profil"

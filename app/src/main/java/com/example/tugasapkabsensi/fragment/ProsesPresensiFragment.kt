@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.tugasapkabsensi.databinding.FragmentProsesPresensiBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ProsesPresensiFragment : Fragment() {
     private var _binding: FragmentProsesPresensiBinding? = null
     private val binding get() = _binding!!
@@ -24,7 +25,6 @@ class ProsesPresensiFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

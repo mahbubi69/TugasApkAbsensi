@@ -8,7 +8,7 @@
     <string name="man2">man 2 school</string>
     <string name="nis">username</string>
     <string name="password">password</string>
-    <string name="login">sign in</string>
+    <string name="login">Login</string>
 
     <!--    edt hint usr & pw-->
     <string name="user">username</string>
@@ -21,10 +21,10 @@
     <!--    navigation-->
     <string name="selamat_datang">Selamat Datang!</string>
     <string name="nama_siswa">Senjakala Nirwana</string>
-    <string name="profil">profil</string>
-    <string name="presensi">presensi</string>
+    <string name="profil">Profil Siswa</string>
+    <string name="presensi">Presensi</string>
     <string name="mapel_presensi">mapel presensi</string>
-    <string name="jadwal">jadwal</string>
+    <string name="jadwal">Jadwal</string>
     <string name="info">info</string>
     <string name="log_out">Log Out</string>
 
@@ -36,7 +36,6 @@
     <string name="profilMenu">PROFIL</string>
 
     <!--    profil siswa-->
-    <string name="profilSiswa">profil siswa</string>
     <string name="nama_profil">  Nama  : Senjakala Nirwana</string>
     <string name="NISN">  NISN     : 12345678900</string>
     <string name="ttl"> TTL        : Bandung,3 Januari 2004</string>
