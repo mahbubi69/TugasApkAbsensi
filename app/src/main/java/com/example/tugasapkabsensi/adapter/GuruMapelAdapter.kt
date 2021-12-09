@@ -7,14 +7,22 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tugasapkabsensi.databinding.ItemRvPresensiBinding
+import com.example.tugasapkabsensi.handler.DataGuruMapelOnclik
 import com.example.tugasapkabsensi.restApi.model.GuruMapelModel
 
-class GuruMapelAdapter : PagingDataAdapter<GuruMapelModel, GuruMapelAdapter.GuruMapelHolder>(
-    DIFF_CALLBACK
-) {
+class GuruMapelAdapter(
+    private val onClik: DataGuruMapelOnclik,
+    ) :
+    PagingDataAdapter<GuruMapelModel, GuruMapelAdapter.GuruMapelHolder>(
+        DIFF_CALLBACK
+    ) {
     override fun onBindViewHolder(holder: GuruMapelHolder, position: Int) {
         getItem(position)?.let { data ->
             holder.bind(data)
+
+            holder.itemView.setOnClickListener {
+                onClik.onClikItem(data)
+            }
         }
     }
 
@@ -27,7 +35,7 @@ class GuruMapelAdapter : PagingDataAdapter<GuruMapelModel, GuruMapelAdapter.Guru
     inner class GuruMapelHolder(private val binding: ItemRvPresensiBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(dataGuruMapel: GuruMapelModel) {
-            binding.tvNamaJadwalPresent.text = dataGuruMapel.idGuru.toString()
+            binding.tvNamaJadwalPresent.text = dataGuruMapel.idMapel
         }
     }
 

@@ -7,7 +7,6 @@
     android:orientation="vertical"
     tools:context=".fragment.ProsesPresensiFragment">
 
-
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"

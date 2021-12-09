@@ -8,5 +8,5 @@ data class GuruMapelModel(
     @SerializedName("id_guru")
     val idGuru: Int,
     @SerializedName("id_mapel")
-    val idMapel: Int,
+    val idMapel: String,
 )

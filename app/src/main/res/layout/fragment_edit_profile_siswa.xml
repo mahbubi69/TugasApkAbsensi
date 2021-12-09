@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_grade_user"
-    tools:context=".fragment.ProfilFragment">
-
+    tools:context=".fragment.EditProfileSiswaFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_user_siswa"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back" />
+
+    </androidx.appcompat.widget.Toolbar>
 
 
     <RelativeLayout
         android:id="@+id/rl_siswa1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-
-        <ImageView
-            android:id="@+id/img_list_user_siswa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_profil_list" />
 
         <RelativeLayout
             android:id="@+id/rl_siswa"
@@ -39,7 +34,7 @@
 
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img_siswa"
+                android:id="@+id/img_edit_siswa"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:padding="3dp"
@@ -47,8 +42,8 @@
 
         </RelativeLayout>
 
-        <TextView
-            android:id="@+id/tv_nama_siswa"
+        <EditText
+            android:id="@+id/et_edit_nama_siswa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/rl_siswa"
@@ -56,7 +51,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:fontFamily="sans-serif-light"
-            android:text="@string/nama_profil"
+            android:hint="@string/nama_profil"
             android:textColor="@color/white"
             android:textSize="30sp" />
 
@@ -64,11 +59,13 @@
 
 
     <RelativeLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/rl_siswa1">
 
         <LinearLayout
+            android:id="@+id/ln_cd_biodate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -92,20 +89,16 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tv_nisn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <EditText
+                    android:id="@+id/et_edit_nisn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="3dp"
                     android:fontFamily="sans-serif-light"
-                    android:text="@string/nisn"
+                    android:hint="@string/edit_NISN"
                     android:textColor="@color/black"
                     android:textSize="23sp" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/black" />
             </LinearLayout>
 
             <LinearLayout
@@ -123,20 +116,15 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tv_ttl"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/et_edit_ttl"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:fontFamily="sans-serif-light"
-                    android:text="@string/ttl"
+                    android:hint="@string/edit_Ttl"
                     android:textColor="@color/black"
                     android:textSize="23sp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/black" />
 
             </LinearLayout>
 
@@ -156,24 +144,29 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tv_alamat"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/et_edit_alamat"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:fontFamily="sans-serif-light"
-                    android:text="@string/alamat"
+                    android:hint="@string/edit_Alamat"
                     android:textColor="@color/black"
                     android:textSize="23sp" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/black" />
 
             </LinearLayout>
         </LinearLayout>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ln_cd_biodate"
+            android:layout_centerInParent="true"
+            android:backgroundTint="#C7BEA2"
+            android:text="simpan"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp" />
     </RelativeLayout>
 
 

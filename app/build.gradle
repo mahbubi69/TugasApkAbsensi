@@ -94,6 +94,16 @@ dependencies {
     implementation "androidx.paging:paging-runtime-ktx:3.1.0"
     testImplementation "androidx.paging:paging-common-ktx:3.1.0"
 
+    //support design
+    implementation "androidx.appcompat:appcompat:1.4.0"
+    implementation "com.google.android.material:material:1.4.0"
 
+    //img ciclular
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    //img picker
+    implementation 'com.github.Drjacky:ImagePicker:1.8.4'
+
+    //rounde imageView
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 }

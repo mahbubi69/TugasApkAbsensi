@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Singleton
 
 @Singleton
-class PagingSourceFactory(
+class PagingPresentSourceFactory(
     private val siswaService: UserService,
     private val token: String,
 ) : PagingSource<Int, GuruMapelModel>() {

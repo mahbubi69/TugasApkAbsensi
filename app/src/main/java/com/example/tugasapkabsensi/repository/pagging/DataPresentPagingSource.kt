@@ -11,14 +11,14 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class DataPagingSource @Inject constructor(private val siswaService: UserService) {
+class DataPresentPagingSource @Inject constructor(private val siswaService: UserService) {
     fun ListDataGuruMapel(token: String): Flow<PagingData<GuruMapelModel>> {
         return Pager(
             config = PagingConfig(
                 pageSize = Value.DEFAULT_PAGE_SIZE,
                 enablePlaceholders = true
             ),
-            pagingSourceFactory = { PagingSourceFactory(siswaService, token) }
+            pagingSourceFactory = { PagingPresentSourceFactory(siswaService, token) }
         ).flow
     }
 }

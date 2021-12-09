@@ -1,7 +1,7 @@
 package com.example.tugasapkabsensi.repository
 
 import androidx.paging.PagingData
-import com.example.tugasapkabsensi.repository.pagging.DataPagingSource
+import com.example.tugasapkabsensi.repository.pagging.DataPresentPagingSource
 import com.example.tugasapkabsensi.restApi.UserService
 import com.example.tugasapkabsensi.restApi.model.GuruMapelModel
 import com.example.tugasapkabsensi.restApi.model.LogInSubmitSiswa
@@ -20,7 +20,7 @@ import javax.inject.Singleton
 @Singleton
 class SiswaRepository @Inject constructor(
     private val siswaService: UserService,
-    private val dataSourceGuruMapel: DataPagingSource,
+    private val dataPresentSourceGuruMapel: DataPresentPagingSource,
 ) {
 
     suspend fun logInSiswaRepo(submit: LogInSubmitSiswa): Flow<ApiResponseSiswa<LogInResponseSiswa>> {
@@ -62,27 +62,7 @@ class SiswaRepository @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
-//    suspend fun getDataGuruMapel(
-//        token: String,
-//    ): Flow<ApiResponseSiswa<String>> {
-//        return flow {
-//            emit(ApiResponseSiswa.Loading())
-//            try {
-//                emit(ApiResponseSiswa.Loading())
-//                val respGuruMapel = siswaService.getGuruMapel(token)
-//                if (respGuruMapel.status == 200) {
-//                    emit(ApiResponseSiswa.Succes(respGuruMapel.message))
-//
-//                } else {
-//                    emit(ApiResponseSiswa.Error(respGuruMapel.message))
-//                }
-//            } catch (e: Exception) {
-//                emit(ApiResponseSiswa.Error(e.message.toString()))
-//            }
-//        }
-//    }
-
     fun getDataguruMapelRepo(token: String): Flow<PagingData<GuruMapelModel>> {
-        return dataSourceGuruMapel.ListDataGuruMapel(token)
+        return dataPresentSourceGuruMapel.ListDataGuruMapel(token)
     }
 }

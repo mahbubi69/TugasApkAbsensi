@@ -20,7 +20,6 @@
 
     <!--    navigation-->
     <string name="selamat_datang">Selamat Datang!</string>
-    <string name="nama_siswa">Senjakala Nirwana</string>
     <string name="profil">Profil Siswa</string>
     <string name="presensi">Presensi</string>
     <string name="mapel_presensi">mapel presensi</string>
@@ -36,11 +35,13 @@
     <string name="profilMenu">PROFIL</string>
 
     <!--    profil siswa-->
-    <string name="nama_profil">  Nama  : Senjakala Nirwana</string>
-    <string name="NISN">  NISN     : 12345678900</string>
-    <string name="ttl"> TTL        : Bandung,3 Januari 2004</string>
-    <string name="alamat">Alamat     : Jl.Kaliurang Timur Nomor 01</string>
-    <string name="daftarRiwayat">daftar riwayat hidup</string>
+    <string name="nama_profil">Nama Siswa</string>
+    <string name="NISN">Nisn</string>
+    <string name="nisn">12345678900</string>
+    <string name="Ttl">Tempat Tanggal Lahir</string>
+    <string name="ttl">Bandung,3 Januari 2004</string>
+    <string name="Alamat">Alamat</string>
+    <string name="alamat">Jl.Kaliurang Timur Nomor 01</string>
 
     <!--    info-->
     <string name="laporanAbsen">Laporan Absen</string>
@@ -60,10 +61,21 @@
     <!--    proses present-->
     <string name="tanggal_proses_absesni">tanggal absen</string>
     <string name="jam_proses_absesni">jam absen</string>
-    <string name="info_proses_present">present</string>
+    <string name="info_proses_present">?</string>
 
     <!-- default   prefens-->
     <string name="keperluan_token">tokenPrefens</string>
 
 
+    <!--    user-->
+    <string name="edt_img_user">Edit Img</string>
+    <string name="edt_biodata_user">Edit Biodate</string>
+    <string name="Log_out_user">Logout</string>
+
+
+    <!--    edit profil-->
+    <string name="edit_nama_profil">Nama Siswa</string>
+    <string name="edit_NISN">Nisn</string>
+    <string name="edit_Ttl">Tempat Tanggal Lahir</string>
+    <string name="edit_Alamat">Alamat</string>
 </resources>

@@ -13,7 +13,7 @@ interface UserService {
         @Body submit: LogInSubmitSiswa,
     ): LogInResponseSiswa
 
-    @GET("/dataSiswa")
+    @GET("/profileSiswa")
     suspend fun getProfilSiswa(
         @Header("token") token: String,
     ): SiswaResponse

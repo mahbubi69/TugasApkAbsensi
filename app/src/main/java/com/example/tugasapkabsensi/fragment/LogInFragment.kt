@@ -30,6 +30,7 @@ class LogInFragment : Fragment() {
     //mvvm
     private val viewModel: LogInViewModel by viewModels()
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -45,6 +46,7 @@ class LogInFragment : Fragment() {
         submitLogIn()
     }
 
+    //
     fun submitLogIn() {
 
         binding.btnLogIn.setOnClickListener {
@@ -86,6 +88,7 @@ class LogInFragment : Fragment() {
                     sharedPrefencSiswa.setTokenSiswa(Value.KEY_BASE_TOKEN, logIn.data.token)
                     val inten = Intent(requireContext(), MainActivity1::class.java)
                     startActivity(inten)
+                    activity?.finish()
 
                     Timber.d("berhasil login : ${logIn.data.token}")
                 }

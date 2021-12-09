@@ -7,19 +7,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.tugasapkabsensi.R
 import com.example.tugasapkabsensi.adapter.GuruMapelAdapter
 import com.example.tugasapkabsensi.databinding.FragmentPresensiBinding
+import com.example.tugasapkabsensi.handler.DataGuruMapelOnclik
 import com.example.tugasapkabsensi.mvvm.GuruMapelViewModel
+import com.example.tugasapkabsensi.restApi.model.GuruMapelModel
 import com.example.tugasapkabsensi.util.SharedPrefencSiswa
+import com.example.tugasapkabsensi.value.Value
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
 @AndroidEntryPoint
-class PresensiFragment : Fragment() {
+class PresensiFragment : Fragment(), DataGuruMapelOnclik {
     private var _binding: FragmentPresensiBinding? = null
     private val binding get() = _binding!!
 
@@ -45,7 +50,7 @@ class PresensiFragment : Fragment() {
     }
 
     fun initiateRv() {
-        guruMapelAdapter = GuruMapelAdapter()
+        guruMapelAdapter = GuruMapelAdapter(this)
         guruMapelAdapter.addLoadStateListener { loadData ->
             if (loadData.append.endOfPaginationReached) {
                 if (guruMapelAdapter.itemCount < 1) {
@@ -78,4 +83,12 @@ class PresensiFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
+
+    override fun onClikItem(listItemDataGuruMapelClik: GuruMapelModel) {
+//        pref.setIdDataGuruMapel(Value.KEY_BASE_ID_GURU_MAPEL,listItemDataGuruMapelClik.idMapel )
+       findNavController().navigate(R.id.action_presensiFragment_to_detailPresensiFragment)
+
+    }
+
+
 }
