@@ -1,6 +1,7 @@
 package com.example.tugasapkabsensi.fragment
 
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
@@ -18,6 +19,7 @@ import com.example.tugasapkabsensi.restApi.model.SiswaProfilModel
 import com.example.tugasapkabsensi.restApi.response.ApiResponseSiswa
 import com.example.tugasapkabsensi.util.SharedPrefencSiswa
 import com.example.tugasapkabsensi.value.Value
+import com.github.drjacky.imagepicker.ImagePicker
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import java.lang.Exception
@@ -30,7 +32,10 @@ class ProfilFragment : Fragment() {
     private val viewModelSiswa: ProfileSiswaViewModel by viewModels()
 
     private var token: String = ""
+    private var idSiswa: Int? = null
     lateinit var pref: SharedPrefencSiswa
+
+    var imagePicker: ImageView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,14 +49,17 @@ class ProfilFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         pref = SharedPrefencSiswa(requireContext())
         token = pref.getToken ?: ""
+        idSiswa = pref.getIdSiswa
         Timber.d("token is $token")
 
-        initiateUserSiswa(token)
+        imagePicker = binding.imgSiswa
+        initiateUserSiswa(token, idSiswa!!)
         popMenuUserSiswa()
+        popMenuImg()
     }
 
-    fun initiateUserSiswa(token: String) {
-        viewModelSiswa.getProfileSiswa(token)
+    fun initiateUserSiswa(token: String, idSiswa: Int) {
+        viewModelSiswa.getProfileSiswa(token, idSiswa)
             .observe(viewLifecycleOwner, Observer { response ->
                 when (response) {
                     is ApiResponseSiswa.Loading -> {
@@ -73,6 +81,7 @@ class ProfilFragment : Fragment() {
     }
 
     fun initiateViewUserSiswa(siswa: SiswaProfilModel) {
+        pref.setIdSiswa(Value.KEY_BASE_ID_SISWA, siswa.idSiswa)
         binding.tvNamaSiswa.text = siswa.namaSiswa
         binding.tvNisn.text = siswa.nisn
         binding.tvTtl.text = siswa.tglLahir
@@ -89,6 +98,8 @@ class ProfilFragment : Fragment() {
             setPositiveButton("Iya") { _, _ ->
                 try {
                     pref.clearTokenSiswa(Value.KEY_BASE_TOKEN)
+                    pref.clearIdDataGuruMapel(Value.KEY_BASE_ID_GURU_MAPEL)
+                    Timber.d("succes clear ${pref.clearIdDataGuruMapel("idGuruMapel")}")
                 } catch (e: Exception) {
                     e.printStackTrace()
                 } finally {
@@ -123,6 +134,50 @@ class ProfilFragment : Fragment() {
         }
     }
 
+    private fun popMenuImg() {
+        binding.ftbEdtImg.setOnClickListener {
+            val popupMenu: PopupMenu = PopupMenu(requireContext(), binding.imgSiswa)
+            popupMenu.menuInflater.inflate(R.menu.nav_menu_img, popupMenu.menu)
+            popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { menuItem ->
+                when (menuItem.itemId) {
+                    R.id.profil_camera -> {
+                        initiateToCamera()
+                    }
+
+                    R.id.profil_image -> {
+                        initiateToGalery()
+                    }
+                }
+                true
+            })
+            popupMenu.show()
+        }
+    }
+
+    private fun initiateToCamera() {
+        ImagePicker.with(this)
+            .cameraOnly()
+            .crop()
+            .start()
+
+        Timber.d("you clikked img camera")
+    }
+
+    private fun initiateToGalery() {
+        ImagePicker.with(this)
+            .galleryOnly()
+            .galleryMimeTypes(arrayOf("image/*"))
+            .crop()
+            .maxResultSize(400, 400)
+            .start()
+        Timber.d("you clikked img galery")
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == ImagePicker.REQUEST_CODE)
+            imagePicker?.setImageURI(data?.data)
+    }
 
     override fun onDestroy() {
         super.onDestroy()

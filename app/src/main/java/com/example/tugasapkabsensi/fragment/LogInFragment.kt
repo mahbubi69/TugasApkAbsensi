@@ -30,7 +30,6 @@ class LogInFragment : Fragment() {
     //mvvm
     private val viewModel: LogInViewModel by viewModels()
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,

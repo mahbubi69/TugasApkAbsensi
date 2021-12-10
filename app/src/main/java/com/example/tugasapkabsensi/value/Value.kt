@@ -5,13 +5,13 @@ object Value {
     const val CHANNEL_NOTIFICATION_2 = "channel notification2"
 
     //link rest api
-    const val BASE_URL = "https://bc82-180-253-166-168.ngrok.io"
+    const val BASE_URL = "https://7477-180-253-165-172.ngrok.io"
 
     //key shareprefens
     const val PREF_NAME = "siswaPref"
     const val KEY_BASE_TOKEN = "key.token"
-    const val KEY_BASE_ID_GURU_MAPEL = "key.id.guru.mapel"
-    const val KEY_PREF_INTRO_TOKEN_LOGIN = "pref.into.key.login"
+    const val KEY_BASE_ID_GURU_MAPEL = "key.base.id.guru.mapel"
+    const val KEY_BASE_ID_SISWA = "key.base.id.siswa"
 
     //key paging
     const val DEFAULT_PAGE_INDEX = 1

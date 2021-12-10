@@ -12,57 +12,17 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:id="@+id/edt_ic_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_back" />
 
     </androidx.appcompat.widget.Toolbar>
 
-
     <RelativeLayout
-        android:id="@+id/rl_siswa1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RelativeLayout
-            android:id="@+id/rl_siswa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="65dp"
-            android:background="@drawable/bg_circle_border">
-
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img_edit_siswa"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:padding="3dp"
-                android:src="@drawable/bg_user_siswa" />
-
-        </RelativeLayout>
-
-        <EditText
-            android:id="@+id/et_edit_nama_siswa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rl_siswa"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:fontFamily="sans-serif-light"
-            android:hint="@string/nama_profil"
-            android:textColor="@color/white"
-            android:textSize="30sp" />
-
-    </RelativeLayout>
-
-
-    <RelativeLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/rl_siswa1">
+        android:layout_marginTop="52dp">
 
         <LinearLayout
             android:id="@+id/ln_cd_biodate"
@@ -84,18 +44,44 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="@string/NISN"
+                    android:text="@string/nama_profil"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/et_edit_nisn"
+                    android:id="@+id/et_edit_nama"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="3dp"
                     android:fontFamily="sans-serif-light"
-                    android:hint="@string/edit_NISN"
+                    android:hint="@string/edit_nama_profil"
+                    android:textColor="@color/black"
+                    android:textSize="23sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/password"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/et_edit_passwprd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="@string/password"
                     android:textColor="@color/black"
                     android:textSize="23sp" />
 
@@ -163,10 +149,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/ln_cd_biodate"
             android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
             android:backgroundTint="#C7BEA2"
             android:text="simpan"
-            android:textColor="@color/black"
-            android:layout_marginTop="20dp" />
+            android:textColor="@color/black" />
     </RelativeLayout>
 
 

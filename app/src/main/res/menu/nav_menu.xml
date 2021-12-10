@@ -11,10 +11,6 @@
         android:icon="@drawable/ic_clok_presesnt"
         android:title="@string/presensiMenu" />
 
-    <item
-        android:id="@+id/jadwalFragment"
-        android:icon="@drawable/ic_list"
-        android:title="@string/jadwalMenu" />
 
     <item
         android:id="@+id/profilFragment2"

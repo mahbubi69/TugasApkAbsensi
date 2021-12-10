@@ -27,9 +27,6 @@
         <action
             android:id="@+id/action_profilFragment2_to_editProfileSiswaFragment"
             app:destination="@id/editProfileSiswaFragment" />
-        <action
-            android:id="@+id/action_profilFragment2_to_editImgSiswaFragment"
-            app:destination="@id/editImgSiswaFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailPresensiFragment"
@@ -40,10 +37,9 @@
         android:id="@+id/editProfileSiswaFragment"
         android:name="com.example.tugasapkabsensi.fragment.EditProfileSiswaFragment"
         android:label="fragment_edit_profile_siswa"
-        tools:layout="@layout/fragment_edit_profile_siswa" />
-    <fragment
-        android:id="@+id/editImgSiswaFragment"
-        android:name="com.example.tugasapkabsensi.fragment.EditImgSiswaFragment"
-        android:label="fragment_edit_img_siswa"
-        tools:layout="@layout/fragment_edit_img_siswa" />
+        tools:layout="@layout/fragment_edit_profile_siswa" >
+        <action
+            android:id="@+id/action_editProfileSiswaFragment_to_profilFragment2"
+            app:destination="@id/profilFragment2" />
+    </fragment>
 </navigation>

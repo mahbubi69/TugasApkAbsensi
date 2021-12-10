@@ -14,10 +14,10 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileSiswaViewModel @Inject constructor(private val profilSiswaRepo: SiswaRepository) :
     ViewModel() {
-    fun getProfileSiswa(token: String): LiveData<ApiResponseSiswa<SiswaResponse>> =
+    fun getProfileSiswa(token: String, idSiswa: Int): LiveData<ApiResponseSiswa<SiswaResponse>> =
         runBlocking {
             val siswaJob = async {
-                profilSiswaRepo.getProfileSiswaRepo(token)
+                profilSiswaRepo.getProfileSiswaRepo(token, idSiswa)
             }
             runBlocking {
                 siswaJob.await().asLiveData()

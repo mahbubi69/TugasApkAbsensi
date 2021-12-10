@@ -22,7 +22,7 @@
     <string name="selamat_datang">Selamat Datang!</string>
     <string name="profil">Profil Siswa</string>
     <string name="presensi">Presensi</string>
-    <string name="mapel_presensi">mapel presensi</string>
+    <string name="mapel_presensi">Mapel Presensi</string>
     <string name="jadwal">Jadwal</string>
     <string name="info">info</string>
     <string name="log_out">Log Out</string>
@@ -60,8 +60,10 @@
 
     <!--    proses present-->
     <string name="tanggal_proses_absesni">tanggal absen</string>
-    <string name="jam_proses_absesni">jam absen</string>
-    <string name="info_proses_present">?</string>
+    <string name="jam_start_proses_absesni">start jam</string>
+    <string name="slace"> - </string>
+    <string name="jam_end_proses_absesni">end jam</string>
+    <string name="info_proses_present"> ? </string>
 
     <!-- default   prefens-->
     <string name="keperluan_token">tokenPrefens</string>
@@ -71,6 +73,8 @@
     <string name="edt_img_user">Edit Img</string>
     <string name="edt_biodata_user">Edit Biodate</string>
     <string name="Log_out_user">Logout</string>
+    <string name="profile_camera">Camera</string>
+    <string name="profile_image">Image</string>
 
 
     <!--    edit profil-->

@@ -34,8 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="65dp"
-            android:background="@drawable/bg_circle_border">
+            android:layout_marginTop="65dp">
 
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -44,6 +43,15 @@
                 android:layout_height="150dp"
                 android:padding="3dp"
                 android:src="@drawable/bg_user_siswa" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/ftb_edt_img"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="90dp"
+                android:layout_marginTop="90dp"
+                android:backgroundTint="@color/abu_abu"
+                android:src="@drawable/ic_camera" />
 
         </RelativeLayout>
 

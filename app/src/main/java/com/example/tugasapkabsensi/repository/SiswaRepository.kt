@@ -2,9 +2,11 @@ package com.example.tugasapkabsensi.repository
 
 import androidx.paging.PagingData
 import com.example.tugasapkabsensi.repository.pagging.DataPresentPagingSource
+import com.example.tugasapkabsensi.repository.pagging.DataProsesPresentPagingSource
 import com.example.tugasapkabsensi.restApi.UserService
 import com.example.tugasapkabsensi.restApi.model.GuruMapelModel
 import com.example.tugasapkabsensi.restApi.model.LogInSubmitSiswa
+import com.example.tugasapkabsensi.restApi.model.ProsesAbsensiModel
 import com.example.tugasapkabsensi.restApi.response.ApiResponseSiswa
 import com.example.tugasapkabsensi.restApi.response.LogInResponseSiswa
 import com.example.tugasapkabsensi.restApi.response.SiswaResponse
@@ -21,6 +23,7 @@ import javax.inject.Singleton
 class SiswaRepository @Inject constructor(
     private val siswaService: UserService,
     private val dataPresentSourceGuruMapel: DataPresentPagingSource,
+    private val dataProsesAbsensi: DataProsesPresentPagingSource,
 ) {
 
     suspend fun logInSiswaRepo(submit: LogInSubmitSiswa): Flow<ApiResponseSiswa<LogInResponseSiswa>> {
@@ -44,12 +47,13 @@ class SiswaRepository @Inject constructor(
     //get
     suspend fun getProfileSiswaRepo(
         token: String,
+        idSiswa: Int,
     ): Flow<ApiResponseSiswa<SiswaResponse>> {
         return flow {
             emit(ApiResponseSiswa.Loading())
             try {
                 emit(ApiResponseSiswa.Loading())
-                val respSiwa = siswaService.getProfilSiswa(token)
+                val respSiwa = siswaService.getProfilSiswa(token, idSiswa)
                 if (respSiwa.status == 200) {
                     emit(ApiResponseSiswa.Succes(respSiwa))
                 } else {
@@ -64,5 +68,12 @@ class SiswaRepository @Inject constructor(
 
     fun getDataguruMapelRepo(token: String): Flow<PagingData<GuruMapelModel>> {
         return dataPresentSourceGuruMapel.ListDataGuruMapel(token)
+    }
+
+    fun getdataProsesAbsensi(
+        token: String,
+        idGuruMapel: Int,
+    ): Flow<PagingData<ProsesAbsensiModel>> {
+        return dataProsesAbsensi.ListdDataProsesAbsen(token, idGuruMapel)
     }
 }

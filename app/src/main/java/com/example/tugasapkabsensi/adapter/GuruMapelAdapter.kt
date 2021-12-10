@@ -9,10 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tugasapkabsensi.databinding.ItemRvPresensiBinding
 import com.example.tugasapkabsensi.handler.DataGuruMapelOnclik
 import com.example.tugasapkabsensi.restApi.model.GuruMapelModel
+import com.example.tugasapkabsensi.util.SharedPrefencSiswa
+import com.example.tugasapkabsensi.value.Value
 
 class GuruMapelAdapter(
     private val onClik: DataGuruMapelOnclik,
-    ) :
+    private var pref: SharedPrefencSiswa,
+) :
     PagingDataAdapter<GuruMapelModel, GuruMapelAdapter.GuruMapelHolder>(
         DIFF_CALLBACK
     ) {
@@ -22,6 +25,8 @@ class GuruMapelAdapter(
 
             holder.itemView.setOnClickListener {
                 onClik.onClikItem(data)
+                pref.setIdDataGuruMapel(Value.KEY_BASE_ID_GURU_MAPEL,
+                    data.idGuruMapel)
             }
         }
     }

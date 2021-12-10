@@ -13,6 +13,7 @@
         app:elevation="0dp">
 
         <LinearLayout
+            android:background="@drawable/bg_grade_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">

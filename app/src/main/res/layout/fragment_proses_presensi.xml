@@ -10,7 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/hijau"
+        android:background="@drawable/bg_grade_user"
         app:elevation="0dp">
 
         <LinearLayout
@@ -26,7 +26,6 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
                 android:text="@string/mapel_presensi"
-                android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -34,16 +33,16 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
-        android:layout_marginTop="3dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
         android:orientation="horizontal">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_detail_present"
+            android:id="@+id/rv_proses_detail_present"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/item_poses_present"/>
+            tools:listitem="@layout/item_poses_present" />
 
     </LinearLayout>
 

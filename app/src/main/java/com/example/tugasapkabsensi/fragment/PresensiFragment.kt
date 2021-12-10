@@ -17,7 +17,6 @@ import com.example.tugasapkabsensi.handler.DataGuruMapelOnclik
 import com.example.tugasapkabsensi.mvvm.GuruMapelViewModel
 import com.example.tugasapkabsensi.restApi.model.GuruMapelModel
 import com.example.tugasapkabsensi.util.SharedPrefencSiswa
-import com.example.tugasapkabsensi.value.Value
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -50,7 +49,7 @@ class PresensiFragment : Fragment(), DataGuruMapelOnclik {
     }
 
     fun initiateRv() {
-        guruMapelAdapter = GuruMapelAdapter(this)
+        guruMapelAdapter = GuruMapelAdapter(this, pref)
         guruMapelAdapter.addLoadStateListener { loadData ->
             if (loadData.append.endOfPaginationReached) {
                 if (guruMapelAdapter.itemCount < 1) {
@@ -85,9 +84,10 @@ class PresensiFragment : Fragment(), DataGuruMapelOnclik {
     }
 
     override fun onClikItem(listItemDataGuruMapelClik: GuruMapelModel) {
-//        pref.setIdDataGuruMapel(Value.KEY_BASE_ID_GURU_MAPEL,listItemDataGuruMapelClik.idMapel )
-       findNavController().navigate(R.id.action_presensiFragment_to_detailPresensiFragment)
-
+        findNavController().navigate(R.id.action_presensiFragment_to_detailPresensiFragment)
+//        pref.setIdDataGuruMapel(Value.KEY_BASE_ID_GURU_MAPEL,
+//            listItemDataGuruMapelClik.idGuruMapel)
+//        Timber.d("idGuruMapel = ${listItemDataGuruMapelClik.idGuruMapel}")
     }
 
 
