@@ -49,7 +49,6 @@ class LogInFragment : Fragment() {
     fun submitLogIn() {
 
         binding.btnLogIn.setOnClickListener {
-
             val nisn = binding.etNisn.text.toString().trim()
             val password = binding.etPassword.text.toString().trim()
 
@@ -83,13 +82,17 @@ class LogInFragment : Fragment() {
 
                 is ApiResponseSiswa.Succes -> {
                     showLoading(false)
-
                     sharedPrefencSiswa.setTokenSiswa(Value.KEY_BASE_TOKEN, logIn.data.token)
+                    sharedPrefencSiswa.setIdSiswa(Value.KEY_BASE_ID_SISWA, logIn.data.idUser)
+                    sharedPrefencSiswa.setIdJurusanKelas(Value.KEY_BASE_ID_JURUSAN_KELAS,
+                        logIn.data.idJurusanKelas)
+
                     val inten = Intent(requireContext(), MainActivity1::class.java)
                     startActivity(inten)
                     activity?.finish()
 
                     Timber.d("berhasil login : ${logIn.data.token}")
+                    Timber.d("id siswa login : ${logIn.data.idUser}")
                 }
 
                 is ApiResponseSiswa.Error -> {

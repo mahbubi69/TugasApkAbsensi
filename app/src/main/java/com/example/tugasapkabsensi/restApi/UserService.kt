@@ -15,8 +15,14 @@ interface UserService {
     ): LogInResponseSiswa
 
     //profile
-    @GET("/profileSiswa/{id_siswa}")
+    @GET("api/profileSiswa/{id_siswa}")
     suspend fun getProfilSiswa(
+        @Header("token") token: String,
+        @Path("id_siswa") idSiswa: Int,
+    ): SiswaResponse
+
+    @POST("api/dataSiswa/updateSiswa/{id_siswa}")
+    suspend fun updateProfile(
         @Header("token") token: String,
         @Path("id_siswa") idSiswa: Int,
     ): SiswaResponse
@@ -29,9 +35,10 @@ interface UserService {
     ): AbsensiResponse
 
     //present
-    @GET("api/dataGuruMapel")
+    @GET("api/dataGuruMapel/{id_jurusan_kelas}")
     suspend fun getGuruMapel(
         @Header("token") token: String,
+        @Path("id_jurusan_kelas") idJurusanKelas: Int,
     ): GuruMapelResponse
 
 

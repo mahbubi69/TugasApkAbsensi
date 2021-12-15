@@ -16,14 +16,14 @@ class GuruMapelViewModel @Inject constructor(
 ) : ViewModel() {
     private var currentDataGuruMapel: Flow<PagingData<GuruMapelModel>>? = null
 
-    fun getDataGuruMapelMvvm(token: String): Flow<PagingData<GuruMapelModel>> {
+    fun getDataGuruMapelMvvm(token: String, idJurusanKelas: Int): Flow<PagingData<GuruMapelModel>> {
         val lastRersult = currentDataGuruMapel
         if (lastRersult != null) {
             return lastRersult
         }
 
         val newResult: Flow<PagingData<GuruMapelModel>> =
-            siswaRepositoy.getDataguruMapelRepo(token).cachedIn(viewModelScope)
+            siswaRepositoy.getDataguruMapelRepo(token, idJurusanKelas).cachedIn(viewModelScope)
         currentDataGuruMapel = newResult
         return newResult
     }

@@ -9,4 +9,8 @@ data class LogInResponseSiswa(
     val message: String,
     @SerializedName("token")
     val token: String,
+    @SerializedName("idUser")
+    val idUser: Int,
+    @SerializedName("idJurusanKelas")
+    val idJurusanKelas: Int,
 )

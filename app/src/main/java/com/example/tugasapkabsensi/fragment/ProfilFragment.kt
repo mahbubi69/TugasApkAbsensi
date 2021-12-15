@@ -10,7 +10,9 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.tugasapkabsensi.R
 import com.example.tugasapkabsensi.activity.MainActivity
 import com.example.tugasapkabsensi.databinding.FragmentProfilBinding
@@ -19,7 +21,7 @@ import com.example.tugasapkabsensi.restApi.model.SiswaProfilModel
 import com.example.tugasapkabsensi.restApi.response.ApiResponseSiswa
 import com.example.tugasapkabsensi.util.SharedPrefencSiswa
 import com.example.tugasapkabsensi.value.Value
-import com.github.drjacky.imagepicker.ImagePicker
+import com.github.dhaval2404.imagepicker.ImagePicker
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import java.lang.Exception
@@ -31,11 +33,7 @@ class ProfilFragment : Fragment() {
 
     private val viewModelSiswa: ProfileSiswaViewModel by viewModels()
 
-    private var token: String = ""
-    private var idSiswa: Int? = null
     lateinit var pref: SharedPrefencSiswa
-
-    var imagePicker: ImageView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,17 +46,24 @@ class ProfilFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         pref = SharedPrefencSiswa(requireContext())
-        token = pref.getToken ?: ""
-        idSiswa = pref.getIdSiswa
+        val token = pref.getToken ?: ""
+        val idSiswa = pref.getIdSiswa
         Timber.d("token is $token")
 
-        imagePicker = binding.imgSiswa
-        initiateUserSiswa(token, idSiswa!!)
+        initiateUserSiswa(token, idSiswa)
         popMenuUserSiswa()
         popMenuImg()
+
+        binding.imgSiswa.setOnClickListener {
+            findNavController().navigate(R.id.action_profilFragment2_to_detailImgProfileFragment)
+        }
+
     }
 
     fun initiateUserSiswa(token: String, idSiswa: Int) {
+        Timber.d("token $token")
+        Timber.d("idSiswa $idSiswa")
+
         viewModelSiswa.getProfileSiswa(token, idSiswa)
             .observe(viewLifecycleOwner, Observer { response ->
                 when (response) {
@@ -80,12 +85,27 @@ class ProfilFragment : Fragment() {
             })
     }
 
+
     fun initiateViewUserSiswa(siswa: SiswaProfilModel) {
-        pref.setIdSiswa(Value.KEY_BASE_ID_SISWA, siswa.idSiswa)
         binding.tvNamaSiswa.text = siswa.namaSiswa
         binding.tvNisn.text = siswa.nisn
         binding.tvTtl.text = siswa.tglLahir
         binding.tvAlamat.text = siswa.alamat
+
+
+        Glide.with(binding.root)
+            .load(Value.BASE_URL + siswa.imageSiswa)
+            .into(binding.imgSiswa)
+
+        binding.imgSiswa.setOnClickListener {
+            val img = siswa.imageSiswa
+
+            val nextFragmentProfil =
+                ProfilFragmentDirections.actionProfilFragment2ToDetailImgProfileFragment(
+                    img
+                )
+            view?.findNavController()?.navigate(nextFragmentProfil)
+        }
     }
 
     private fun prosesMessageLogout() {
@@ -99,6 +119,9 @@ class ProfilFragment : Fragment() {
                 try {
                     pref.clearTokenSiswa(Value.KEY_BASE_TOKEN)
                     pref.clearIdDataGuruMapel(Value.KEY_BASE_ID_GURU_MAPEL)
+                    pref.clearIdSiswa(Value.KEY_BASE_ID_SISWA)
+                    pref.clearIdJurusanKelas(Value.KEY_BASE_ID_JURUSAN_KELAS)
+
                     Timber.d("succes clear ${pref.clearIdDataGuruMapel("idGuruMapel")}")
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -110,7 +133,6 @@ class ProfilFragment : Fragment() {
             }
         }.create().show()
     }
-
 
     private fun popMenuUserSiswa() {
         binding.imgListUserSiswa.setOnClickListener {
@@ -143,7 +165,6 @@ class ProfilFragment : Fragment() {
                     R.id.profil_camera -> {
                         initiateToCamera()
                     }
-
                     R.id.profil_image -> {
                         initiateToGalery()
                     }
@@ -155,28 +176,30 @@ class ProfilFragment : Fragment() {
     }
 
     private fun initiateToCamera() {
-        ImagePicker.with(this)
+        ImagePicker.with(requireActivity() as Activity)
             .cameraOnly()
             .crop()
+            .maxResultSize(1080, 1080)
             .start()
-
         Timber.d("you clikked img camera")
     }
 
     private fun initiateToGalery() {
-        ImagePicker.with(this)
+        ImagePicker.with(requireActivity() as Activity)
             .galleryOnly()
             .galleryMimeTypes(arrayOf("image/*"))
             .crop()
-            .maxResultSize(400, 400)
+            .maxResultSize(1080, 1080)
             .start()
         Timber.d("you clikked img galery")
     }
 
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK && requestCode == ImagePicker.REQUEST_CODE)
-            imagePicker?.setImageURI(data?.data)
+        if (resultCode == Activity.RESULT_OK && requestCode == ImagePicker.REQUEST_CODE) {
+            binding.imgSiswa.setImageURI(data?.data)
+        }
     }
 
     override fun onDestroy() {
@@ -184,3 +207,4 @@ class ProfilFragment : Fragment() {
         _binding = null
     }
 }
+

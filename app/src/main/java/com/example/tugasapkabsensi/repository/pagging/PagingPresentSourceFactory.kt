@@ -12,6 +12,7 @@ import javax.inject.Singleton
 class PagingPresentSourceFactory(
     private val siswaService: UserService,
     private val token: String,
+    private val idJurusanKelas: Int,
 ) : PagingSource<Int, GuruMapelModel>() {
     override fun getRefreshKey(state: PagingState<Int, GuruMapelModel>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
@@ -22,7 +23,7 @@ class PagingPresentSourceFactory(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, GuruMapelModel> {
 
-        val result = siswaService.getGuruMapel(token)
+        val result = siswaService.getGuruMapel(token, idJurusanKelas)
         val data = result.data ?: emptyList()
         val page = params.key ?: Value.DEFAULT_PAGE_INDEX
 

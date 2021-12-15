@@ -1,5 +1,6 @@
 package com.example.tugasapkabsensi.fragment
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -47,9 +48,8 @@ class ProsesPresensiFragment : Fragment() {
         initiatePagingData(token, idGuruMapel)
     }
 
-
     fun initiateRv() {
-        prosesAbsensiAdapter = ProsesAbsensiAdapter()
+        prosesAbsensiAdapter = ProsesAbsensiAdapter(requireContext())
         prosesAbsensiAdapter.addLoadStateListener { loadData ->
             if (loadData.append.endOfPaginationReached) {
                 if (prosesAbsensiAdapter.itemCount < 1) {
@@ -81,4 +81,5 @@ class ProsesPresensiFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
+
 }

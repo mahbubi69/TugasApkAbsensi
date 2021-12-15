@@ -12,13 +12,17 @@ import javax.inject.Singleton
 
 @Singleton
 class DataPresentPagingSource @Inject constructor(private val siswaService: UserService) {
-    fun ListDataGuruMapel(token: String): Flow<PagingData<GuruMapelModel>> {
+    fun ListDataGuruMapel(token: String, idJurusanKelas: Int): Flow<PagingData<GuruMapelModel>> {
         return Pager(
             config = PagingConfig(
                 pageSize = Value.DEFAULT_PAGE_SIZE,
                 enablePlaceholders = true
             ),
-            pagingSourceFactory = { PagingPresentSourceFactory(siswaService, token) }
+            pagingSourceFactory = {
+                PagingPresentSourceFactory(siswaService,
+                    token,
+                    idJurusanKelas)
+            }
         ).flow
     }
 }

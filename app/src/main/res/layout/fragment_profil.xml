@@ -39,17 +39,17 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_siswa"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
                 android:padding="3dp"
                 android:src="@drawable/bg_user_siswa" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/ftb_edt_img"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="90dp"
-                android:layout_marginTop="90dp"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginStart="120dp"
+                android:layout_marginTop="120dp"
                 android:backgroundTint="@color/abu_abu"
                 android:src="@drawable/ic_camera" />
 

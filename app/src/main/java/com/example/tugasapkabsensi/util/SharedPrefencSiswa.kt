@@ -26,8 +26,18 @@ class SharedPrefencSiswa(context: Context) {
         editor.apply()
     }
 
+    fun setIdJurusanKelas(prefIdJurudanKelas: String, idJurusanKelas: Int) {
+        editor.putInt(prefIdJurudanKelas, idJurusanKelas)
+        editor.apply()
+    }
+
     fun clearTokenSiswa(prefKey: String) {
         editor.remove(prefKey)
+        editor.apply()
+    }
+
+    fun clearIdSiswa(prefIdSiswa: String) {
+        editor.remove(prefIdSiswa)
         editor.apply()
     }
 
@@ -36,8 +46,16 @@ class SharedPrefencSiswa(context: Context) {
         editor.apply()
     }
 
+    fun clearIdJurusanKelas(prefUdGuruMapel: String) {
+        editor.remove(prefUdGuruMapel)
+        editor.apply()
+    }
+
+
+
     val getToken = prefs.getString(Value.KEY_BASE_TOKEN, "")
     val getIdGuruMapel = prefs.getInt(Value.KEY_BASE_ID_GURU_MAPEL, 0)
     val getIdSiswa = prefs.getInt(Value.KEY_BASE_ID_SISWA, 0)
+    val getIdJurusanKelas = prefs.getInt(Value.KEY_BASE_ID_JURUSAN_KELAS, 0)
 
 }

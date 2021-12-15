@@ -7,6 +7,7 @@ import com.example.tugasapkabsensi.restApi.UserService
 import com.example.tugasapkabsensi.restApi.model.GuruMapelModel
 import com.example.tugasapkabsensi.restApi.model.LogInSubmitSiswa
 import com.example.tugasapkabsensi.restApi.model.ProsesAbsensiModel
+import com.example.tugasapkabsensi.restApi.model.SiswaProfilModel
 import com.example.tugasapkabsensi.restApi.response.ApiResponseSiswa
 import com.example.tugasapkabsensi.restApi.response.LogInResponseSiswa
 import com.example.tugasapkabsensi.restApi.response.SiswaResponse
@@ -53,11 +54,11 @@ class SiswaRepository @Inject constructor(
             emit(ApiResponseSiswa.Loading())
             try {
                 emit(ApiResponseSiswa.Loading())
-                val respSiwa = siswaService.getProfilSiswa(token, idSiswa)
-                if (respSiwa.status == 200) {
-                    emit(ApiResponseSiswa.Succes(respSiwa))
+                val respSiswa = siswaService.getProfilSiswa(token, idSiswa)
+                if (respSiswa.message == "Success") {
+                    emit(ApiResponseSiswa.Succes(respSiswa))
                 } else {
-                    emit(ApiResponseSiswa.Error(respSiwa.message))
+                    emit(ApiResponseSiswa.Error(respSiswa.message))
                 }
             } catch (e: Exception) {
                 emit(ApiResponseSiswa.Error(e.toString()))
@@ -66,8 +67,8 @@ class SiswaRepository @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
-    fun getDataguruMapelRepo(token: String): Flow<PagingData<GuruMapelModel>> {
-        return dataPresentSourceGuruMapel.ListDataGuruMapel(token)
+    fun getDataguruMapelRepo(token: String, idJurusanKelas: Int): Flow<PagingData<GuruMapelModel>> {
+        return dataPresentSourceGuruMapel.ListDataGuruMapel(token, idJurusanKelas)
     }
 
     fun getdataProsesAbsensi(

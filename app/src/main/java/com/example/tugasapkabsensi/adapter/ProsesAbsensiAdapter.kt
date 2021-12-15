@@ -1,14 +1,20 @@
 package com.example.tugasapkabsensi.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tugasapkabsensi.R
 import com.example.tugasapkabsensi.databinding.ItemPosesPresentBinding
 import com.example.tugasapkabsensi.restApi.model.ProsesAbsensiModel
 
-class ProsesAbsensiAdapter() :
+class ProsesAbsensiAdapter(
+    val c: Context,
+) :
     PagingDataAdapter<ProsesAbsensiModel, ProsesAbsensiAdapter.ProsesAbsensiHolder>(
         DIFF_CALLBACK
     ) {
@@ -20,17 +26,40 @@ class ProsesAbsensiAdapter() :
             binding.tvProsesStartJamAbnsesi.text = dataProsesPresent.startTime
             binding.tvProsesEndJamAbnsesi.text = dataProsesPresent.endTime
             binding.tvInfoPresent.text = dataProsesPresent.hasilAbsen
+            binding.tvInfoPresent.setOnClickListener { item ->
+                popMenus(item)
+            }
+        }
+
+        private fun popMenus(v: View) {
+            val popupMenu = PopupMenu(c, v)
+            popupMenu.menuInflater.inflate(R.menu.nav_proses_present_user, popupMenu.menu)
+            popupMenu.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.edt_presensi -> {
+
+                    }
+                    R.id.edt_ijin -> {
+
+                    }
+
+                }
+                true
+            }
+            popupMenu.show()
         }
     }
 
     override fun onBindViewHolder(holder: ProsesAbsensiHolder, position: Int) {
         getItem(position)?.let { data ->
             holder.bindData(data)
+
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProsesAbsensiHolder {
-        val binding = ItemPosesPresentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemPosesPresentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ProsesAbsensiHolder(binding)
     }
 

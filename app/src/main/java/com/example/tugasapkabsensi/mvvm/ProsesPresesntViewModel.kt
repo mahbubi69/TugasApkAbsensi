@@ -30,7 +30,5 @@ class ProsesPresesntViewModel @Inject constructor(
             siswaRepository.getdataProsesAbsensi(token, idGuruMapel).cachedIn(viewModelScope)
         currentDataProsesAbsensi = newResult
         return newResult
-
     }
-
 }

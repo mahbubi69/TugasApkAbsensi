@@ -82,4 +82,8 @@
     <string name="edit_NISN">Nisn</string>
     <string name="edit_Ttl">Tempat Tanggal Lahir</string>
     <string name="edit_Alamat">Alamat</string>
+
+    <!--    presensi-->
+    <string name="edt_presensi">Presensi</string>
+    <string name="edt_ijin">Ijin</string>
 </resources>

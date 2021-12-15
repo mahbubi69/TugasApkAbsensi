@@ -101,9 +101,6 @@ dependencies {
     //img ciclular
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
-    //img picker
-    implementation 'com.github.Drjacky:ImagePicker:1.8.4'
-
     //rounde imageView
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
@@ -114,6 +111,10 @@ dependencies {
     implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
 
     //img picker
+    implementation "androidx.activity:activity-ktx:1.4.0"
+    implementation "androidx.fragment:fragment-ktx:1.4.0"
     implementation 'com.github.dhaval2404:imagepicker-support:1.7.1'
-    implementation 'com.github.florent37:inline-activity-result-kotlin:1.0.4'
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
 }

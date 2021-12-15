@@ -43,9 +43,10 @@ class PresensiFragment : Fragment(), DataGuruMapelOnclik {
         super.onViewCreated(view, savedInstanceState)
         pref = SharedPrefencSiswa(requireContext())
         val token: String = pref.getToken ?: ""
+        val idJurusanKelas = pref.getIdJurusanKelas
 
         initiateRv()
-        initiatePagingData(token)
+        initiatePagingData(token, idJurusanKelas)
     }
 
     fun initiateRv() {
@@ -69,9 +70,9 @@ class PresensiFragment : Fragment(), DataGuruMapelOnclik {
         }
     }
 
-    fun initiatePagingData(token: String) {
+    fun initiatePagingData(token: String, idJurusanKelas: Int) {
         lifecycleScope.launch {
-            viewModel.getDataGuruMapelMvvm(token).collect { dataGuruMapel ->
+            viewModel.getDataGuruMapelMvvm(token, idJurusanKelas).collect { dataGuruMapel ->
                 guruMapelAdapter.submitData(dataGuruMapel)
             }
         }
@@ -85,9 +86,6 @@ class PresensiFragment : Fragment(), DataGuruMapelOnclik {
 
     override fun onClikItem(listItemDataGuruMapelClik: GuruMapelModel) {
         findNavController().navigate(R.id.action_presensiFragment_to_detailPresensiFragment)
-//        pref.setIdDataGuruMapel(Value.KEY_BASE_ID_GURU_MAPEL,
-//            listItemDataGuruMapelClik.idGuruMapel)
-//        Timber.d("idGuruMapel = ${listItemDataGuruMapelClik.idGuruMapel}")
     }
 
 

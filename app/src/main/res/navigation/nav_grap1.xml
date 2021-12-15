@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_profilFragment2_to_editProfileSiswaFragment"
             app:destination="@id/editProfileSiswaFragment" />
+        <action
+            android:id="@+id/action_profilFragment2_to_detailImgProfileFragment"
+            app:destination="@id/detailImgProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailPresensiFragment"
@@ -41,5 +44,14 @@
         <action
             android:id="@+id/action_editProfileSiswaFragment_to_profilFragment2"
             app:destination="@id/profilFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailImgProfileFragment"
+        android:name="com.example.tugasapkabsensi.fragment.DetailImgProfileFragment"
+        android:label="fragment_detail_img_profile"
+        tools:layout="@layout/fragment_detail_img_profile" >
+        <argument
+            android:name="img"
+            app:argType="string" />
     </fragment>
 </navigation>
