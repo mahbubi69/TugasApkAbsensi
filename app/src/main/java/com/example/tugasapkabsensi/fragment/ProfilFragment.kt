@@ -92,7 +92,6 @@ class ProfilFragment : Fragment() {
         binding.tvTtl.text = siswa.tglLahir
         binding.tvAlamat.text = siswa.alamat
 
-
         Glide.with(binding.root)
             .load(Value.BASE_URL + siswa.imageSiswa)
             .into(binding.imgSiswa)

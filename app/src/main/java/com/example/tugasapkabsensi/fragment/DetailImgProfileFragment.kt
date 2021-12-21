@@ -41,10 +41,8 @@ class DetailImgProfileFragment : Fragment() {
                 .into(binding.imgDetailProfile)
         } catch (e: Exception) {
             print(e)
-
         }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

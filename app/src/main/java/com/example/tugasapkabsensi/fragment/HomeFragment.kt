@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import com.example.tugasapkabsensi.databinding.FragmentHomeBinding
 import com.example.tugasapkabsensi.value.DataSliderItemHome
 
-
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null

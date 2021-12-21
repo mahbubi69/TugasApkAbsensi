@@ -10,7 +10,6 @@ class SharedPrefencSiswa(context: Context) {
         context.applicationContext.getSharedPreferences(Value.PREF_NAME, Context.MODE_PRIVATE)
     private val editor = prefs.edit()
 
-
     fun setTokenSiswa(prefToken: String, token: String) {
         editor.putString(prefToken, token)
         editor.apply()
@@ -50,7 +49,6 @@ class SharedPrefencSiswa(context: Context) {
         editor.remove(prefUdGuruMapel)
         editor.apply()
     }
-
 
 
     val getToken = prefs.getString(Value.KEY_BASE_TOKEN, "")

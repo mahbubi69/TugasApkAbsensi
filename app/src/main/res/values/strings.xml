@@ -38,7 +38,7 @@
     <string name="nama_profil">Nama Siswa</string>
     <string name="NISN">Nisn</string>
     <string name="nisn">12345678900</string>
-    <string name="Ttl">Tempat Tanggal Lahir</string>
+    <string name="no_hp">No Hp</string>
     <string name="ttl">Bandung,3 Januari 2004</string>
     <string name="Alamat">Alamat</string>
     <string name="alamat">Jl.Kaliurang Timur Nomor 01</string>
@@ -80,7 +80,7 @@
     <!--    edit profil-->
     <string name="edit_nama_profil">Nama Siswa</string>
     <string name="edit_NISN">Nisn</string>
-    <string name="edit_Ttl">Tempat Tanggal Lahir</string>
+    <string name="edit_No_HP">Nomor Hp</string>
     <string name="edit_Alamat">Alamat</string>
 
     <!--    presensi-->

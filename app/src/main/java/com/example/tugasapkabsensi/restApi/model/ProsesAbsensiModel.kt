@@ -17,4 +17,6 @@ data class ProsesAbsensiModel(
     val startTime: String,
     @SerializedName("end_time")
     val endTime: String,
+    @SerializedName("tgl_absen")
+    val tglAbsen: String,
 )

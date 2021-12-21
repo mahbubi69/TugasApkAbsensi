@@ -47,7 +47,6 @@ class LogInFragment : Fragment() {
 
     //
     fun submitLogIn() {
-
         binding.btnLogIn.setOnClickListener {
             val nisn = binding.etNisn.text.toString().trim()
             val password = binding.etPassword.text.toString().trim()
@@ -122,7 +121,7 @@ class LogInFragment : Fragment() {
 
     private fun showErrorDialog(message: String) {
         AlertDialog.Builder(requireContext()).apply {
-            setTitle("Opps ada kesalahan!!")
+            setTitle("ada kesalahan tolong periksa lagi username dan password anda")
             setMessage(message)
             setPositiveButton("OK") { p0, _ ->
                 p0.dismiss()

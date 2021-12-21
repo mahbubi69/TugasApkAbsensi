@@ -4,13 +4,11 @@ import androidx.paging.PagingData
 import com.example.tugasapkabsensi.repository.pagging.DataPresentPagingSource
 import com.example.tugasapkabsensi.repository.pagging.DataProsesPresentPagingSource
 import com.example.tugasapkabsensi.restApi.UserService
-import com.example.tugasapkabsensi.restApi.model.GuruMapelModel
-import com.example.tugasapkabsensi.restApi.model.LogInSubmitSiswa
-import com.example.tugasapkabsensi.restApi.model.ProsesAbsensiModel
-import com.example.tugasapkabsensi.restApi.model.SiswaProfilModel
+import com.example.tugasapkabsensi.restApi.model.*
 import com.example.tugasapkabsensi.restApi.response.ApiResponseSiswa
 import com.example.tugasapkabsensi.restApi.response.LogInResponseSiswa
 import com.example.tugasapkabsensi.restApi.response.SiswaResponse
+import com.example.tugasapkabsensi.restApi.response.UpdateProfileResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -40,6 +38,29 @@ class SiswaRepository @Inject constructor(
                 }
             } catch (e: Exception) {
                 emit(ApiResponseSiswa.Error(e.toString()))
+                Timber.e("$e")
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    //update profile
+    suspend fun updateProfileSiswa(
+        token: String,
+        idSiswa: Int,
+        submit: UpdateProfileSubmit,
+    ): Flow<ApiResponseSiswa<String>> {
+        return flow {
+            emit(ApiResponseSiswa.Loading())
+            try {
+                emit(ApiResponseSiswa.Loading())
+                val responseUpdateProfile = siswaService.updateProfile(token, idSiswa, submit)
+                if (responseUpdateProfile.status == 200) {
+                    emit(ApiResponseSiswa.Succes(responseUpdateProfile.message))
+                } else {
+                    emit(ApiResponseSiswa.Error(responseUpdateProfile.message))
+                }
+            } catch (e: Exception) {
+                emit(ApiResponseSiswa.Error(e.message.toString()))
                 Timber.e("$e")
             }
         }.flowOn(Dispatchers.IO)

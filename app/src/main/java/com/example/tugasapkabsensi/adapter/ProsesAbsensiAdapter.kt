@@ -26,6 +26,7 @@ class ProsesAbsensiAdapter(
             binding.tvProsesStartJamAbnsesi.text = dataProsesPresent.startTime
             binding.tvProsesEndJamAbnsesi.text = dataProsesPresent.endTime
             binding.tvInfoPresent.text = dataProsesPresent.hasilAbsen
+            binding.tvTanggalProsesAbsensi.text = dataProsesPresent.tglAbsen
             binding.tvInfoPresent.setOnClickListener { item ->
                 popMenus(item)
             }

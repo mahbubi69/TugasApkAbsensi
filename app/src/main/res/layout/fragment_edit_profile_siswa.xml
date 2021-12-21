@@ -64,6 +64,32 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/Alamat"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/et_edit_alamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="@string/edit_Alamat"
+                    android:textColor="@color/black"
+                    android:textSize="23sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
@@ -97,54 +123,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="@string/Ttl"
+                    android:text="@string/no_hp"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/et_edit_ttl"
+                    android:id="@+id/et_edit_no_hp"
+                    android:inputType="phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:fontFamily="sans-serif-light"
-                    android:hint="@string/edit_Ttl"
+                    android:hint="@string/edit_No_HP"
                     android:textColor="@color/black"
                     android:textSize="23sp" />
 
             </LinearLayout>
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text="@string/Alamat"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/et_edit_alamat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:fontFamily="sans-serif-light"
-                    android:hint="@string/edit_Alamat"
-                    android:textColor="@color/black"
-                    android:textSize="23sp" />
-
-
-            </LinearLayout>
         </LinearLayout>
 
         <Button
+            android:id="@+id/btn_simpan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/ln_cd_biodate"
