@@ -1,5 +1,6 @@
 package com.example.tugasapkabsensi.repository
 
+import android.R
 import androidx.paging.PagingData
 import com.example.tugasapkabsensi.repository.pagging.DataPresentPagingSource
 import com.example.tugasapkabsensi.repository.pagging.DataProsesPresentPagingSource
@@ -8,7 +9,7 @@ import com.example.tugasapkabsensi.restApi.model.*
 import com.example.tugasapkabsensi.restApi.response.ApiResponseSiswa
 import com.example.tugasapkabsensi.restApi.response.LogInResponseSiswa
 import com.example.tugasapkabsensi.restApi.response.SiswaResponse
-import com.example.tugasapkabsensi.restApi.response.UpdateProfileResponse
+import com.example.tugasapkabsensi.restApi.response.UpdateImageResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -66,36 +67,85 @@ class SiswaRepository @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
-    //get
-    suspend fun getProfileSiswaRepo(
+    //update image
+    suspend fun updateImage(
         token: String,
         idSiswa: Int,
-    ): Flow<ApiResponseSiswa<SiswaResponse>> {
+        submit: UpdateImagesubmit,
+    ): Flow<ApiResponseSiswa<String>> {
         return flow {
             emit(ApiResponseSiswa.Loading())
             try {
                 emit(ApiResponseSiswa.Loading())
-                val respSiswa = siswaService.getProfilSiswa(token, idSiswa)
-                if (respSiswa.message == "Success") {
-                    emit(ApiResponseSiswa.Succes(respSiswa))
+                val responseUpdateImage = siswaService.updateImage(token, idSiswa, submit)
+                if (responseUpdateImage.status == 200) {
+                    emit(ApiResponseSiswa.Succes(responseUpdateImage.message))
                 } else {
-                    emit(ApiResponseSiswa.Error(respSiswa.message))
+                    emit(ApiResponseSiswa.Error(responseUpdateImage.message))
                 }
             } catch (e: Exception) {
-                emit(ApiResponseSiswa.Error(e.toString()))
+                emit(ApiResponseSiswa.Error(e.message.toString()))
                 Timber.e("$e")
             }
         }.flowOn(Dispatchers.IO)
     }
 
-    fun getDataguruMapelRepo(token: String, idJurusanKelas: Int): Flow<PagingData<GuruMapelModel>> {
-        return dataPresentSourceGuruMapel.ListDataGuruMapel(token, idJurusanKelas)
-    }
 
-    fun getdataProsesAbsensi(
-        token: String,
-        idGuruMapel: Int,
-    ): Flow<PagingData<ProsesAbsensiModel>> {
-        return dataProsesAbsensi.ListdDataProsesAbsen(token, idGuruMapel)
-    }
+//update absen
+suspend fun updateProsesAbsen(
+    token: String,
+    idGuruMapel: Int,
+    idSiswa: Int,
+    submit: UpdateProsesAbsenSubmit,
+): Flow<ApiResponseSiswa<String>> {
+    return flow {
+        emit(ApiResponseSiswa.Loading())
+        try {
+            emit(ApiResponseSiswa.Loading())
+            val responseUpdateAbsen =
+                siswaService.updateAbsen(token, idGuruMapel, idSiswa, submit)
+            if (responseUpdateAbsen.status == 200) {
+                emit(ApiResponseSiswa.Succes(responseUpdateAbsen.message))
+            } else {
+                emit(ApiResponseSiswa.Error(responseUpdateAbsen.message))
+            }
+        } catch (e: Exception) {
+            emit(ApiResponseSiswa.Error(e.message.toString()))
+            Timber.e("$e")
+        }
+    }.flowOn(Dispatchers.IO)
+}
+
+//get
+suspend fun getProfileSiswaRepo(
+    token: String,
+    idSiswa: Int,
+): Flow<ApiResponseSiswa<SiswaResponse>> {
+    return flow {
+        emit(ApiResponseSiswa.Loading())
+        try {
+            emit(ApiResponseSiswa.Loading())
+            val respSiswa = siswaService.getProfilSiswa(token, idSiswa)
+            if (respSiswa.message == "Success") {
+                emit(ApiResponseSiswa.Succes(respSiswa))
+            } else {
+                emit(ApiResponseSiswa.Error(respSiswa.message))
+            }
+        } catch (e: Exception) {
+            emit(ApiResponseSiswa.Error(e.toString()))
+            Timber.e("$e")
+        }
+    }.flowOn(Dispatchers.IO)
+}
+
+fun getDataguruMapelRepo(token: String, idJurusanKelas: Int): Flow<PagingData<GuruMapelModel>> {
+    return dataPresentSourceGuruMapel.ListDataGuruMapel(token, idJurusanKelas)
+}
+
+fun getdataProsesAbsensi(
+    token: String,
+    idGuruMapel: Int,
+): Flow<PagingData<ProsesAbsensiModel>> {
+    return dataProsesAbsensi.ListdDataProsesAbsen(token, idGuruMapel)
+}
 }

@@ -86,4 +86,9 @@
     <!--    presensi-->
     <string name="edt_presensi">Presensi</string>
     <string name="edt_ijin">Ijin</string>
+
+    <!--    logput lottie-->
+    <string name="messege_logout">apakah anda yakin akan keluar</string>
+    <string name="yes_logout">Iya</string>
+    <string name="no_logout">Tidak</string>
 </resources>

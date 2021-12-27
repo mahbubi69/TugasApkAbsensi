@@ -3,7 +3,10 @@ package com.example.tugasapkabsensi.fragment
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
 import android.widget.*
@@ -17,7 +20,9 @@ import com.example.tugasapkabsensi.R
 import com.example.tugasapkabsensi.activity.MainActivity
 import com.example.tugasapkabsensi.databinding.FragmentProfilBinding
 import com.example.tugasapkabsensi.mvvm.ProfileSiswaViewModel
+import com.example.tugasapkabsensi.mvvm.UpdateImageViewModel
 import com.example.tugasapkabsensi.restApi.model.SiswaProfilModel
+import com.example.tugasapkabsensi.restApi.model.UpdateImagesubmit
 import com.example.tugasapkabsensi.restApi.response.ApiResponseSiswa
 import com.example.tugasapkabsensi.util.SharedPrefencSiswa
 import com.example.tugasapkabsensi.value.Value
@@ -26,12 +31,14 @@ import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import java.lang.Exception
 
+
 @AndroidEntryPoint
 class ProfilFragment : Fragment() {
     private var _binding: FragmentProfilBinding? = null
     private val binding get() = _binding!!
 
     private val viewModelSiswa: ProfileSiswaViewModel by viewModels()
+    private val viewModelImage: UpdateImageViewModel by viewModels()
 
     lateinit var pref: SharedPrefencSiswa
 
@@ -50,7 +57,7 @@ class ProfilFragment : Fragment() {
         val idSiswa = pref.getIdSiswa
         Timber.d("token is $token")
 
-        initiateUserSiswa(token, idSiswa)
+        initiateGetUserSiswa(token, idSiswa)
         popMenuUserSiswa()
         popMenuImg()
 
@@ -60,7 +67,8 @@ class ProfilFragment : Fragment() {
 
     }
 
-    fun initiateUserSiswa(token: String, idSiswa: Int) {
+    //memulai get profile
+    fun initiateGetUserSiswa(token: String, idSiswa: Int) {
         Timber.d("token $token")
         Timber.d("idSiswa $idSiswa")
 
@@ -85,7 +93,6 @@ class ProfilFragment : Fragment() {
             })
     }
 
-
     fun initiateViewUserSiswa(siswa: SiswaProfilModel) {
         binding.tvNamaSiswa.text = siswa.namaSiswa
         binding.tvNisn.text = siswa.nisn
@@ -94,11 +101,12 @@ class ProfilFragment : Fragment() {
 
         Glide.with(binding.root)
             .load(Value.BASE_URL + siswa.imageSiswa)
+            .placeholder(R.drawable.bg_user_siswa)
             .into(binding.imgSiswa)
 
+        //detail img
         binding.imgSiswa.setOnClickListener {
             val img = siswa.imageSiswa
-
             val nextFragmentProfil =
                 ProfilFragmentDirections.actionProfilFragment2ToDetailImgProfileFragment(
                     img
@@ -107,32 +115,8 @@ class ProfilFragment : Fragment() {
         }
     }
 
-    private fun prosesMessageLogout() {
-        AlertDialog.Builder(requireContext()).apply {
-            setTitle("Logout")
-            setMessage("Apakah Anda Yakin Akan Keluar?")
-            setNegativeButton("Tidak") { p0, _ ->
-                p0.dismiss()
-            }
-            setPositiveButton("Iya") { _, _ ->
-                try {
-                    pref.clearTokenSiswa(Value.KEY_BASE_TOKEN)
-                    pref.clearIdDataGuruMapel(Value.KEY_BASE_ID_GURU_MAPEL)
-                    pref.clearIdSiswa(Value.KEY_BASE_ID_SISWA)
-                    pref.clearIdJurusanKelas(Value.KEY_BASE_ID_JURUSAN_KELAS)
 
-                    Timber.d("succes clear ${pref.clearIdDataGuruMapel("idGuruMapel")}")
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                } finally {
-                    val inten = Intent(requireContext(), MainActivity::class.java)
-                    startActivity(inten)
-                    activity?.finish()
-                }
-            }
-        }.create().show()
-    }
-
+    //edt/logout
     private fun popMenuUserSiswa() {
         binding.imgListUserSiswa.setOnClickListener {
             val popMenu: PopupMenu = PopupMenu(requireContext(), binding.imgListUserSiswa)
@@ -145,7 +129,8 @@ class ProfilFragment : Fragment() {
                     }
 
                     R.id.log_out -> {
-                        prosesMessageLogout()
+                        messageCustomDialogLogout()
+//                        prosesMessageLogout()
                         Timber.d("you clikked logout")
                     }
                 }
@@ -153,6 +138,97 @@ class ProfilFragment : Fragment() {
             })
             popMenu.show()
         }
+    }
+
+//    private fun prosesMessageLogout() {
+//        AlertDialog.Builder(requireContext()).apply {
+//            setTitle("Logout")
+//            setMessage("Apakah Anda Yakin Akan Keluar?")
+//            setNegativeButton("Tidak") { p0, _ ->
+//                p0.dismiss()
+//            }
+//            setPositiveButton("Iya") { _, _ ->
+//                try {
+//                    pref.clearTokenSiswa(Value.KEY_BASE_TOKEN)
+//                    pref.clearIdDataGuruMapel(Value.KEY_BASE_ID_GURU_MAPEL)
+//                    pref.clearIdSiswa(Value.KEY_BASE_ID_SISWA)
+//                    pref.clearIdJurusanKelas(Value.KEY_BASE_ID_JURUSAN_KELAS)
+//
+//                    Timber.d("succes clear ${pref.clearIdDataGuruMapel("idGuruMapel")}")
+//                } catch (e: Exception) {
+//                    e.printStackTrace()
+//                } finally {
+//                    val inten = Intent(requireContext(), MainActivity::class.java)
+//                    startActivity(inten)
+//                    activity?.finish()
+//                }
+//            }
+//        }.create().show()
+//    }
+
+    private fun messageCustomDialogLogout() {
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.custom_logout_dialog_lottie)
+
+        val btnIya = dialog.findViewById<Button>(R.id.btn_logout_yes)
+        val btnTidak = dialog.findViewById<Button>(R.id.btn_logout_no)
+
+        btnIya.setOnClickListener {
+            try {
+                pref.clearTokenSiswa(Value.KEY_BASE_TOKEN)
+                pref.clearIdDataGuruMapel(Value.KEY_BASE_ID_GURU_MAPEL)
+                pref.clearIdSiswa(Value.KEY_BASE_ID_SISWA)
+                pref.clearIdJurusanKelas(Value.KEY_BASE_ID_JURUSAN_KELAS)
+
+                Timber.d("succes clear ${pref.clearIdDataGuruMapel("idGuruMapel")}")
+            } catch (e: Exception) {
+                e.printStackTrace()
+            } finally {
+                val inten = Intent(requireContext(), MainActivity::class.java)
+                startActivity(inten)
+                activity?.finish()
+            }
+        }
+        btnTidak.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
+
+
+    fun initiateUpdateImage(
+        token: String,
+        idSiswa: Int,
+        submitImage: UpdateImagesubmit,
+    ) {
+        viewModelImage.updateImageSiswaVm(token, idSiswa, submitImage)
+            .observe(viewLifecycleOwner,
+                Observer { updateImage ->
+                    when (updateImage) {
+                        is ApiResponseSiswa.Succes -> {
+                            view?.findNavController()?.popBackStack()
+                        }
+                        is ApiResponseSiswa.Error -> {
+                            showErrorDialog(updateImage.errorMessage)
+                        }
+                        else -> {
+                            Timber.d("Unknow Error")
+                        }
+                    }
+                }
+            )
+    }
+
+    private fun showErrorDialog(message: String) {
+        AlertDialog.Builder(requireContext()).apply {
+            setTitle("ada kesalahan pada saat upload image tolong periksa lagi")
+            setMessage(message)
+            setPositiveButton("OK") { p0, _ ->
+                p0.dismiss()
+            }
+        }.create().show()
     }
 
     private fun popMenuImg() {

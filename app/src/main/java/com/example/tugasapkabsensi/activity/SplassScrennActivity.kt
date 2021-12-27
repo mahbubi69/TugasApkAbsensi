@@ -23,7 +23,7 @@ class SplassScrennActivity : AppCompatActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed({
             if (token.isBlank()) {
-                val inten = Intent(this, MainActivity::class.java)
+                val inten = Intent(this, MainActivity1::class.java)
                 startActivity(inten)
             } else {
                 val inten = Intent(this, MainActivity1::class.java)

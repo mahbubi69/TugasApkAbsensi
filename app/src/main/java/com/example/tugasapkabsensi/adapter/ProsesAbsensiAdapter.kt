@@ -10,10 +10,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tugasapkabsensi.R
 import com.example.tugasapkabsensi.databinding.ItemPosesPresentBinding
+import com.example.tugasapkabsensi.handler.UpdateProsesAbsensiOnclik
 import com.example.tugasapkabsensi.restApi.model.ProsesAbsensiModel
+import com.example.tugasapkabsensi.util.SharedPrefencSiswa
+
 
 class ProsesAbsensiAdapter(
     val c: Context,
+    private val clikProsesPresent: UpdateProsesAbsensiOnclik,
 ) :
     PagingDataAdapter<ProsesAbsensiModel, ProsesAbsensiAdapter.ProsesAbsensiHolder>(
         DIFF_CALLBACK
@@ -38,12 +42,13 @@ class ProsesAbsensiAdapter(
             popupMenu.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.edt_presensi -> {
-
+                        clikProsesPresent.updateProsesAbsen(hasilAbsen = "presensi")
+                        binding.tvInfoPresent.text = "presensi"
                     }
                     R.id.edt_ijin -> {
-
+                        clikProsesPresent.updateProsesAbsen(hasilAbsen = "ijin")
+                        binding.tvInfoPresent.text = "ijin"
                     }
-
                 }
                 true
             }
@@ -83,5 +88,4 @@ class ProsesAbsensiAdapter(
 
             }
     }
-
 }

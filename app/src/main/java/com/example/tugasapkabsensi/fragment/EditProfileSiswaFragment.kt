@@ -54,27 +54,27 @@ class EditProfileSiswaFragment : Fragment() {
         binding.edtIcBack.setOnClickListener {
             findNavController().navigate(R.id.action_editProfileSiswaFragment_to_profilFragment2)
         }
-        submitUpdate()
+        binding.btnSimpan.setOnClickListener {
+            submitUpdate()
+            Toast.makeText(requireContext(), "Berhasil Update Data", Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun submitUpdate() {
-        binding.btnSimpan.setOnClickListener {
-            val nama = binding.etEditNama.text.toString().trim()
-            val alamat = binding.etEditAlamat.text.toString().trim()
-            val password = binding.etEditPasswprd.text.toString().trim()
-            val noHp = binding.etEditNoHp.text.toString().trim()
+        val nama = binding.etEditNama.text.toString().trim()
+        val alamat = binding.etEditAlamat.text.toString().trim()
+        val password = binding.etEditPasswprd.text.toString().trim()
+        val noHp = binding.etEditNoHp.text.toString().trim()
 
-            val updateSiswa = UpdateProfileSubmit(
-                namaSiswa = nama,
-                alamat = alamat,
-                passwordSiswa = password,
-                noHp = noHp,
-            )
-            initiateSubmitUpdateProfile(token, idSiswa!!, updateSiswa)
-            Timber.d("token $token")
-            Timber.d("idSiswa $idSiswa")
-            Toast.makeText(requireContext(), "Berhasil Update Data", Toast.LENGTH_SHORT).show()
-        }
+        val updateSiswa = UpdateProfileSubmit(
+            namaSiswa = nama,
+            alamat = alamat,
+            passwordSiswa = password,
+            noHp = noHp,
+        )
+        initiateSubmitUpdateProfile(token, idSiswa!!, updateSiswa)
+        Timber.d("token $token")
+        Timber.d("idSiswa $idSiswa")
     }
 
     fun initiateSubmitUpdateProfile(
