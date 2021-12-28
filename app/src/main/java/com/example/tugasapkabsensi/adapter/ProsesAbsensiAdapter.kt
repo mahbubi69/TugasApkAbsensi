@@ -1,9 +1,14 @@
 package com.example.tugasapkabsensi.adapter
 
+import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.Button
 import android.widget.PopupMenu
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -12,8 +17,8 @@ import com.example.tugasapkabsensi.R
 import com.example.tugasapkabsensi.databinding.ItemPosesPresentBinding
 import com.example.tugasapkabsensi.handler.UpdateProsesAbsensiOnclik
 import com.example.tugasapkabsensi.restApi.model.ProsesAbsensiModel
-import com.example.tugasapkabsensi.util.SharedPrefencSiswa
-
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ProsesAbsensiAdapter(
     val c: Context,
@@ -30,7 +35,11 @@ class ProsesAbsensiAdapter(
             binding.tvProsesStartJamAbnsesi.text = dataProsesPresent.startTime
             binding.tvProsesEndJamAbnsesi.text = dataProsesPresent.endTime
             binding.tvInfoPresent.text = dataProsesPresent.hasilAbsen
-            binding.tvTanggalProsesAbsensi.text = dataProsesPresent.tglAbsen
+            //parse date
+            val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ROOT)
+            val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.ROOT)
+            val formattedDate = formatter.format(parser.parse(dataProsesPresent.tglAbsen) ?: Date())
+            binding.tvTanggalProsesAbsensi.text = formattedDate
             binding.tvInfoPresent.setOnClickListener { item ->
                 popMenus(item)
             }
@@ -44,10 +53,12 @@ class ProsesAbsensiAdapter(
                     R.id.edt_presensi -> {
                         clikProsesPresent.updateProsesAbsen(hasilAbsen = "presensi")
                         binding.tvInfoPresent.text = "presensi"
+//                        messageUpdateProsesAbsen(v)
                     }
                     R.id.edt_ijin -> {
                         clikProsesPresent.updateProsesAbsen(hasilAbsen = "ijin")
                         binding.tvInfoPresent.text = "ijin"
+//                        messageUpdateProsesAbsen(v)
                     }
                 }
                 true
@@ -55,6 +66,19 @@ class ProsesAbsensiAdapter(
             popupMenu.show()
         }
     }
+
+//    private fun messageUpdateProsesAbsen(v: View) {
+//        val dialog = Dialog(c)
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+//        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+//        dialog.setContentView(R.layout.custom_dialog_proses_present)
+//
+//        val btnConfirm = dialog.findViewById<Button>(R.id.confirm_button)
+//        btnConfirm.setOnClickListener {
+//            dialog.dismiss()
+//        }
+//        dialog.show()
+//    }
 
     override fun onBindViewHolder(holder: ProsesAbsensiHolder, position: Int) {
         getItem(position)?.let { data ->

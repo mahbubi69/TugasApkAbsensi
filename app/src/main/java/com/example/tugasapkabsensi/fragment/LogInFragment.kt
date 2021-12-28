@@ -2,14 +2,21 @@ package com.example.tugasapkabsensi.fragment
 
 
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.example.tugasapkabsensi.R
 import com.example.tugasapkabsensi.activity.MainActivity1
 import com.example.tugasapkabsensi.databinding.FragmentLogInBinding
 import com.example.tugasapkabsensi.mvvm.LogInViewModel
@@ -96,7 +103,7 @@ class LogInFragment : Fragment() {
 
                 is ApiResponseSiswa.Error -> {
                     showLoading(false)
-                    showErrorDialog(logIn.errorMessage)
+                    messageCustomDialogLogout(logIn.errorMessage)
                     Timber.d("Error: {${logIn.errorMessage}}")
                 }
                 else -> {
@@ -118,15 +125,20 @@ class LogInFragment : Fragment() {
         }
     }
 
+    private fun messageCustomDialogLogout(message: String) {
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.custom_dialog_login_message)
 
-    private fun showErrorDialog(message: String) {
-        AlertDialog.Builder(requireContext()).apply {
-            setTitle("ada kesalahan tolong periksa lagi username dan password anda")
-            setMessage(message)
-            setPositiveButton("OK") { p0, _ ->
-                p0.dismiss()
-            }
-        }.create().show()
+        val tvMessage = dialog.findViewById<TextView>(R.id.tv_login_message)
+        val btnOK = dialog.findViewById<Button>(R.id.btn_ok_login_message)
+
+        tvMessage.text = message
+        btnOK.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
     }
 
     override fun onDestroy() {

@@ -41,8 +41,7 @@
                 android:id="@+id/img_siswa"
                 android:layout_width="180dp"
                 android:layout_height="180dp"
-                android:padding="3dp"
-                android:src="@drawable/bg_user_siswa" />
+                android:padding="3dp"/>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/ftb_edt_img"

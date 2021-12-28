@@ -63,13 +63,13 @@ class EditProfileSiswaFragment : Fragment() {
     fun submitUpdate() {
         val nama = binding.etEditNama.text.toString().trim()
         val alamat = binding.etEditAlamat.text.toString().trim()
-        val password = binding.etEditPasswprd.text.toString().trim()
+        val password = binding.etEditPassword.text.toString().trim()
         val noHp = binding.etEditNoHp.text.toString().trim()
 
         val updateSiswa = UpdateProfileSubmit(
             namaSiswa = nama,
             alamat = alamat,
-            passwordSiswa = password,
+            password = password,
             noHp = noHp,
         )
         initiateSubmitUpdateProfile(token, idSiswa!!, updateSiswa)

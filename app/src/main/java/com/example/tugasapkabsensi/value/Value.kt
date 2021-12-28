@@ -5,7 +5,7 @@ object Value {
     const val CHANNEL_NOTIFICATION_2 = "channel notification2"
 
     //link rest api
-    const val BASE_URL = "https://fbce-180-253-163-172.ngrok.io"
+    const val BASE_URL = "https://8f18-2001-448a-5122-4845-8cf1-9900-63a3-e593.ngrok.io"
 
     //key shareprefens
     const val PREF_NAME = "siswaPref"

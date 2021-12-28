@@ -102,7 +102,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/et_edit_passwprd"
+                    android:id="@+id/et_edit_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="3dp"

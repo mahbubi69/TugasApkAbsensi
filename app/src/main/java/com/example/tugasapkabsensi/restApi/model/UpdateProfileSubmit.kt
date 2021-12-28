@@ -7,8 +7,8 @@ data class UpdateProfileSubmit(
     val namaSiswa: String,
     @SerializedName("alamat")
     val alamat: String,
-    @SerializedName("password_siswa")
-    val passwordSiswa: String,
+    @SerializedName("password")
+    val password: String,
     @SerializedName("no_hp")
     val noHp: String,
 )

@@ -109,11 +109,6 @@ dependencies {
     //img slid show
     implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
 
-    //img picker
-    implementation "androidx.activity:activity-ktx:1.4.0"
-    implementation "androidx.fragment:fragment-ktx:1.4.0"
-    implementation 'com.github.dhaval2404:imagepicker-support:1.7.1'
-
     //glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'
 

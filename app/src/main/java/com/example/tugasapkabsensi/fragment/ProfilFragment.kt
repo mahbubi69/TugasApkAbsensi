@@ -1,15 +1,18 @@
 package com.example.tugasapkabsensi.fragment
 
 
-import android.app.Activity
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.*
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -26,10 +29,14 @@ import com.example.tugasapkabsensi.restApi.model.UpdateImagesubmit
 import com.example.tugasapkabsensi.restApi.response.ApiResponseSiswa
 import com.example.tugasapkabsensi.util.SharedPrefencSiswa
 import com.example.tugasapkabsensi.value.Value
-import com.github.dhaval2404.imagepicker.ImagePicker
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 @AndroidEntryPoint
@@ -42,6 +49,9 @@ class ProfilFragment : Fragment() {
 
     lateinit var pref: SharedPrefencSiswa
 
+    var token: String = ""
+    var idSiswa: Int? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -53,11 +63,11 @@ class ProfilFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         pref = SharedPrefencSiswa(requireContext())
-        val token = pref.getToken ?: ""
-        val idSiswa = pref.getIdSiswa
+        token = pref.getToken ?: ""
+        idSiswa = pref.getIdSiswa
         Timber.d("token is $token")
 
-        initiateGetUserSiswa(token, idSiswa)
+        initiateGetUserSiswa(token, idSiswa!!)
         popMenuUserSiswa()
         popMenuImg()
 
@@ -79,9 +89,7 @@ class ProfilFragment : Fragment() {
                         println("loading")
                     }
 
-                    is ApiResponseSiswa.Succes -> {
-                        initiateViewUserSiswa(response.data.data)
-                    }
+                    is ApiResponseSiswa.Succes -> initiateViewUserSiswa(response.data.data)
 
                     is ApiResponseSiswa.Error -> {
                         println("error")
@@ -89,6 +97,7 @@ class ProfilFragment : Fragment() {
                     else -> {
                         print("not found mas")
                     }
+
                 }
             })
     }
@@ -96,8 +105,14 @@ class ProfilFragment : Fragment() {
     fun initiateViewUserSiswa(siswa: SiswaProfilModel) {
         binding.tvNamaSiswa.text = siswa.namaSiswa
         binding.tvNisn.text = siswa.nisn
-        binding.tvTtl.text = siswa.tglLahir
         binding.tvAlamat.text = siswa.alamat
+
+        //parse date
+        val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ROOT)
+        val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.ROOT)
+        val formattedDate = formatter.format(parser.parse(siswa.tglLahir) ?: Date())
+
+        binding.tvTtl.text = formattedDate
 
         Glide.with(binding.root)
             .load(Value.BASE_URL + siswa.imageSiswa)
@@ -114,7 +129,6 @@ class ProfilFragment : Fragment() {
             view?.findNavController()?.navigate(nextFragmentProfil)
         }
     }
-
 
     //edt/logout
     private fun popMenuUserSiswa() {
@@ -139,32 +153,6 @@ class ProfilFragment : Fragment() {
             popMenu.show()
         }
     }
-
-//    private fun prosesMessageLogout() {
-//        AlertDialog.Builder(requireContext()).apply {
-//            setTitle("Logout")
-//            setMessage("Apakah Anda Yakin Akan Keluar?")
-//            setNegativeButton("Tidak") { p0, _ ->
-//                p0.dismiss()
-//            }
-//            setPositiveButton("Iya") { _, _ ->
-//                try {
-//                    pref.clearTokenSiswa(Value.KEY_BASE_TOKEN)
-//                    pref.clearIdDataGuruMapel(Value.KEY_BASE_ID_GURU_MAPEL)
-//                    pref.clearIdSiswa(Value.KEY_BASE_ID_SISWA)
-//                    pref.clearIdJurusanKelas(Value.KEY_BASE_ID_JURUSAN_KELAS)
-//
-//                    Timber.d("succes clear ${pref.clearIdDataGuruMapel("idGuruMapel")}")
-//                } catch (e: Exception) {
-//                    e.printStackTrace()
-//                } finally {
-//                    val inten = Intent(requireContext(), MainActivity::class.java)
-//                    startActivity(inten)
-//                    activity?.finish()
-//                }
-//            }
-//        }.create().show()
-//    }
 
     private fun messageCustomDialogLogout() {
         val dialog = Dialog(requireContext())
@@ -197,30 +185,6 @@ class ProfilFragment : Fragment() {
         dialog.show()
     }
 
-
-    fun initiateUpdateImage(
-        token: String,
-        idSiswa: Int,
-        submitImage: UpdateImagesubmit,
-    ) {
-        viewModelImage.updateImageSiswaVm(token, idSiswa, submitImage)
-            .observe(viewLifecycleOwner,
-                Observer { updateImage ->
-                    when (updateImage) {
-                        is ApiResponseSiswa.Succes -> {
-                            view?.findNavController()?.popBackStack()
-                        }
-                        is ApiResponseSiswa.Error -> {
-                            showErrorDialog(updateImage.errorMessage)
-                        }
-                        else -> {
-                            Timber.d("Unknow Error")
-                        }
-                    }
-                }
-            )
-    }
-
     private fun showErrorDialog(message: String) {
         AlertDialog.Builder(requireContext()).apply {
             setTitle("ada kesalahan pada saat upload image tolong periksa lagi")
@@ -251,30 +215,57 @@ class ProfilFragment : Fragment() {
     }
 
     private fun initiateToCamera() {
-        ImagePicker.with(requireActivity() as Activity)
-            .cameraOnly()
-            .crop()
-            .maxResultSize(1080, 1080)
-            .start()
-        Timber.d("you clikked img camera")
+        var inten = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(inten, 123)
+
     }
 
     private fun initiateToGalery() {
-        ImagePicker.with(requireActivity() as Activity)
-            .galleryOnly()
-            .galleryMimeTypes(arrayOf("image/*"))
-            .crop()
-            .maxResultSize(1080, 1080)
-            .start()
-        Timber.d("you clikked img galery")
+        val inten = Intent(Intent.ACTION_PICK)
+        inten.type = "image/*"
+        startActivityForResult(inten, 456)
     }
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK && requestCode == ImagePicker.REQUEST_CODE) {
+        if (requestCode == 123) {
+            var bmp: Bitmap = data?.extras?.get("data") as Bitmap
+//            val submitUpdateCamera = UpdateImagesubmit(
+//                image = bmp.toString()
+//            )
+//            initiateUpdateImage(token, idSiswa!!, submitUpdateCamera)
+            binding.imgSiswa.setImageBitmap(bmp)
+        } else if (requestCode == 456) {
+//            val submitUpdateGalery = UpdateImagesubmit(
+//                image = data?.data.toString()
+//            )
+//            initiateUpdateImage(token, idSiswa!!, submitUpdateGalery)
             binding.imgSiswa.setImageURI(data?.data)
         }
+    }
+
+
+    fun initiateUpdateImage(
+        token: String,
+        idSiswa: Int,
+        submitImage: UpdateImagesubmit,
+    ) {
+        viewModelImage.updateImageSiswaVm(token, idSiswa, submitImage)
+            .observe(viewLifecycleOwner,
+                Observer { updateImage ->
+                    when (updateImage) {
+                        is ApiResponseSiswa.Succes -> {
+                            view?.findNavController()?.popBackStack()
+                        }
+                        is ApiResponseSiswa.Error -> {
+                            showErrorDialog(updateImage.errorMessage)
+                        }
+                        else -> {
+                            Timber.d("Unknow Error")
+                        }
+                    }
+                }
+            )
     }
 
     override fun onDestroy() {

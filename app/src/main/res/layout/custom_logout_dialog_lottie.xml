@@ -25,7 +25,8 @@
                 app:lottie_autoPlay="true"
                 app:lottie_enableMergePathsForKitKatAndAbove="true"
                 app:lottie_rawRes="@raw/lottie_student"
-                app:lottie_speed="1.25" />
+                app:lottie_speed="1.25"
+                app:lottie_loop="true"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -43,28 +44,26 @@
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btn_logout_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:backgroundTint="@color/green_btn"
-                    android:text="@string/yes_logout"
-                    android:textAllCaps="false" />
 
                 <Button
                     android:id="@+id/btn_logout_no"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="65dp"
+                    android:layout_marginStart="15dp"
                     android:backgroundTint="@color/red"
                     android:text="@string/no_logout"
                     android:textAllCaps="false" />
 
+                <Button
+                    android:id="@+id/btn_logout_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="65dp"
+                    android:backgroundTint="@color/green_btn"
+                    android:text="@string/yes_logout"
+                    android:textAllCaps="false" />
+
             </LinearLayout>
-
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
-
 </RelativeLayout>
