@@ -63,7 +63,7 @@
     <string name="jam_start_proses_absesni">start jam</string>
     <string name="slace"> - </string>
     <string name="jam_end_proses_absesni">end jam</string>
-    <string name="info_proses_present"> ? </string>
+    <string name="info_proses_present"> Edit </string>
 
     <!-- default   prefens-->
     <string name="keperluan_token">tokenPrefens</string>
@@ -75,6 +75,8 @@
     <string name="Log_out_user">Logout</string>
     <string name="profile_camera">Camera</string>
     <string name="profile_image">Image</string>
+    <string name="hapus_foto">Hapus Foto</string>
+    <string name="save_foto">save Foto</string>
 
 
     <!--    edit profil-->

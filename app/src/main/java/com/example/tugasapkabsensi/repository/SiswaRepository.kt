@@ -67,21 +67,21 @@ class SiswaRepository @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
-    //update image
-    suspend fun updateImage(
+    //delet image siswa
+    suspend fun deletImageSiswa(
         token: String,
         idSiswa: Int,
-        submit: UpdateImagesubmit,
+        submit: DeletImageSiswaSubmit,
     ): Flow<ApiResponseSiswa<String>> {
         return flow {
             emit(ApiResponseSiswa.Loading())
             try {
                 emit(ApiResponseSiswa.Loading())
-                val responseUpdateImage = siswaService.updateImage(token, idSiswa, submit)
-                if (responseUpdateImage.status == 200) {
-                    emit(ApiResponseSiswa.Succes(responseUpdateImage.message))
+                val deletImageSiswa = siswaService.updateProfile(token, idSiswa, submit)
+                if (deletImageSiswa.status == 200) {
+                    emit(ApiResponseSiswa.Succes(deletImageSiswa.message))
                 } else {
-                    emit(ApiResponseSiswa.Error(responseUpdateImage.message))
+                    emit(ApiResponseSiswa.Error(deletImageSiswa.message))
                 }
             } catch (e: Exception) {
                 emit(ApiResponseSiswa.Error(e.message.toString()))
@@ -91,61 +91,64 @@ class SiswaRepository @Inject constructor(
     }
 
 
-//update absen
-suspend fun updateProsesAbsen(
-    token: String,
-    idGuruMapel: Int,
-    idSiswa: Int,
-    submit: UpdateProsesAbsenSubmit,
-): Flow<ApiResponseSiswa<String>> {
-    return flow {
-        emit(ApiResponseSiswa.Loading())
-        try {
+    //update absen
+    suspend fun updateProsesAbsen(
+        token: String,
+        idGuruMapel: Int,
+        idSiswa: Int,
+        submit: UpdateProsesAbsenSubmit,
+    ): Flow<ApiResponseSiswa<String>> {
+        return flow {
             emit(ApiResponseSiswa.Loading())
-            val responseUpdateAbsen =
-                siswaService.updateAbsen(token, idGuruMapel, idSiswa, submit)
-            if (responseUpdateAbsen.status == 200) {
-                emit(ApiResponseSiswa.Succes(responseUpdateAbsen.message))
-            } else {
-                emit(ApiResponseSiswa.Error(responseUpdateAbsen.message))
+            try {
+                emit(ApiResponseSiswa.Loading())
+                val responseUpdateAbsen =
+                    siswaService.updateAbsen(token, idGuruMapel, idSiswa, submit)
+                if (responseUpdateAbsen.status == 200) {
+                    emit(ApiResponseSiswa.Succes(responseUpdateAbsen.message))
+                } else {
+                    emit(ApiResponseSiswa.Error(responseUpdateAbsen.message))
+                }
+            } catch (e: Exception) {
+                emit(ApiResponseSiswa.Error(e.message.toString()))
+                Timber.e("$e")
             }
-        } catch (e: Exception) {
-            emit(ApiResponseSiswa.Error(e.message.toString()))
-            Timber.e("$e")
-        }
-    }.flowOn(Dispatchers.IO)
-}
+        }.flowOn(Dispatchers.IO)
+    }
 
-//get
-suspend fun getProfileSiswaRepo(
-    token: String,
-    idSiswa: Int,
-): Flow<ApiResponseSiswa<SiswaResponse>> {
-    return flow {
-        emit(ApiResponseSiswa.Loading())
-        try {
+    //get
+    suspend fun getProfileSiswaRepo(
+        token: String,
+        idSiswa: Int,
+    ): Flow<ApiResponseSiswa<SiswaResponse>> {
+        return flow {
             emit(ApiResponseSiswa.Loading())
-            val respSiswa = siswaService.getProfilSiswa(token, idSiswa)
-            if (respSiswa.message == "Success") {
-                emit(ApiResponseSiswa.Succes(respSiswa))
-            } else {
-                emit(ApiResponseSiswa.Error(respSiswa.message))
+            try {
+                emit(ApiResponseSiswa.Loading())
+                val respSiswa = siswaService.getProfilSiswa(token, idSiswa)
+                if (respSiswa.message == "Success") {
+                    emit(ApiResponseSiswa.Succes(respSiswa))
+                } else {
+                    emit(ApiResponseSiswa.Error(respSiswa.message))
+                }
+            } catch (e: Exception) {
+                emit(ApiResponseSiswa.Error(e.toString()))
+                Timber.e("$e")
             }
-        } catch (e: Exception) {
-            emit(ApiResponseSiswa.Error(e.toString()))
-            Timber.e("$e")
-        }
-    }.flowOn(Dispatchers.IO)
-}
+        }.flowOn(Dispatchers.IO)
+    }
 
-fun getDataguruMapelRepo(token: String, idJurusanKelas: Int): Flow<PagingData<GuruMapelModel>> {
-    return dataPresentSourceGuruMapel.ListDataGuruMapel(token, idJurusanKelas)
-}
+    fun getDataguruMapelRepo(
+        token: String,
+        idJurusanKelas: Int,
+    ): Flow<PagingData<GuruMapelModel>> {
+        return dataPresentSourceGuruMapel.ListDataGuruMapel(token, idJurusanKelas)
+    }
 
-fun getdataProsesAbsensi(
-    token: String,
-    idGuruMapel: Int,
-): Flow<PagingData<ProsesAbsensiModel>> {
-    return dataProsesAbsensi.ListdDataProsesAbsen(token, idGuruMapel)
-}
+    fun getdataProsesAbsensi(
+        token: String,
+        idGuruMapel: Int,
+    ): Flow<PagingData<ProsesAbsensiModel>> {
+        return dataProsesAbsensi.ListdDataProsesAbsen(token, idGuruMapel)
+    }
 }

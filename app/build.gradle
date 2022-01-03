@@ -48,6 +48,14 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
+    implementation 'androidx.fragment:fragment-ktx:1.4.0'
+
+    implementation 'com.karumi:dexter:6.2.3'
+    //    upload Service
+    def uploadServiceVersion = '4.5.2'
+    implementation "net.gotev:uploadservice:$uploadServiceVersion"
+    implementation "net.gotev:uploadservice-okhttp:$uploadServiceVersion"
+
     //nav
     def nav_version = "2.3.5"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
@@ -114,4 +122,8 @@ dependencies {
 
     //lotiie
     implementation 'com.airbnb.android:lottie:3.7.0'
+
+    //library up image
+    implementation "net.gotev:uploadservice:'4.5.2'"
+    implementation "net.gotev:uploadservice-okhttp:'4.5.2'"
 }

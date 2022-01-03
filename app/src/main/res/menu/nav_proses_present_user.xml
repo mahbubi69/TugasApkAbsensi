@@ -6,9 +6,4 @@
         android:id="@+id/edt_presensi"
         android:title="@string/edt_presensi"
         app:showAsAction="never" />
-
-    <item
-        android:id="@+id/edt_ijin"
-        android:title="@string/edt_ijin"
-        app:showAsAction="never" />
 </menu>

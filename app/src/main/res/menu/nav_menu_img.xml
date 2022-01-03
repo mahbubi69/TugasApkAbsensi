@@ -13,4 +13,16 @@
         android:icon="@drawable/ic_image"
         android:title="@string/profile_image"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/save_foto"
+        android:icon="@drawable/ic_save"
+        android:title="@string/save_foto"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/hapus_foto"
+        android:icon="@drawable/ic_image"
+        android:title="@string/hapus_foto"
+        app:showAsAction="always" />
 </menu>

@@ -3,16 +3,15 @@ package com.example.tugasapkabsensi.fragment
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.*
 import android.widget.*
-import androidx.annotation.RequiresApi
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.launch
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -22,20 +21,26 @@ import com.bumptech.glide.Glide
 import com.example.tugasapkabsensi.R
 import com.example.tugasapkabsensi.activity.MainActivity
 import com.example.tugasapkabsensi.databinding.FragmentProfilBinding
+import com.example.tugasapkabsensi.handler.getFilePathFromUri
+import com.example.tugasapkabsensi.handler.getImageUri
+import com.example.tugasapkabsensi.mvvm.DeletImageViewModel
 import com.example.tugasapkabsensi.mvvm.ProfileSiswaViewModel
 import com.example.tugasapkabsensi.mvvm.UpdateImageViewModel
+import com.example.tugasapkabsensi.restApi.model.DeletImageSiswaSubmit
 import com.example.tugasapkabsensi.restApi.model.SiswaProfilModel
-import com.example.tugasapkabsensi.restApi.model.UpdateImagesubmit
+import com.example.tugasapkabsensi.restApi.model.UpdateProfileSubmit
 import com.example.tugasapkabsensi.restApi.response.ApiResponseSiswa
 import com.example.tugasapkabsensi.util.SharedPrefencSiswa
 import com.example.tugasapkabsensi.value.Value
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import java.lang.Exception
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -46,11 +51,14 @@ class ProfilFragment : Fragment() {
 
     private val viewModelSiswa: ProfileSiswaViewModel by viewModels()
     private val viewModelImage: UpdateImageViewModel by viewModels()
+    private val viewModelDeletImage: DeletImageViewModel by viewModels()
 
     lateinit var pref: SharedPrefencSiswa
 
     var token: String = ""
     var idSiswa: Int? = null
+
+    private var imagePath: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,6 +75,8 @@ class ProfilFragment : Fragment() {
         idSiswa = pref.getIdSiswa
         Timber.d("token is $token")
 
+        initiatePermission(requireContext())
+
         initiateGetUserSiswa(token, idSiswa!!)
         popMenuUserSiswa()
         popMenuImg()
@@ -74,7 +84,6 @@ class ProfilFragment : Fragment() {
         binding.imgSiswa.setOnClickListener {
             findNavController().navigate(R.id.action_profilFragment2_to_detailImgProfileFragment)
         }
-
     }
 
     //memulai get profile
@@ -111,7 +120,6 @@ class ProfilFragment : Fragment() {
         val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ROOT)
         val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.ROOT)
         val formattedDate = formatter.format(parser.parse(siswa.tglLahir) ?: Date())
-
         binding.tvTtl.text = formattedDate
 
         Glide.with(binding.root)
@@ -144,7 +152,6 @@ class ProfilFragment : Fragment() {
 
                     R.id.log_out -> {
                         messageCustomDialogLogout()
-//                        prosesMessageLogout()
                         Timber.d("you clikked logout")
                     }
                 }
@@ -152,6 +159,149 @@ class ProfilFragment : Fragment() {
             })
             popMenu.show()
         }
+    }
+
+    private fun showErrorDialog(message: String) {
+        AlertDialog.Builder(requireContext()).apply {
+            setTitle("ada kesalahan pada saat upload image tolong periksa lagi")
+            setMessage(message)
+            setPositiveButton("OK") { p0, _ ->
+                p0.dismiss()
+            }
+        }.create().show()
+    }
+
+    private fun popMenuImg() {
+        binding.ftbEdtImg.setOnClickListener {
+            val popupMenu: PopupMenu = PopupMenu(requireContext(), binding.imgSiswa)
+            popupMenu.menuInflater.inflate(R.menu.nav_menu_img, popupMenu.menu)
+            popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { menuItem ->
+                when (menuItem.itemId) {
+                    R.id.profil_camera -> {
+                        takePictureOnCamera.launch()
+                        Timber.d("upload camera Succes $takePictureOnCamera")
+                    }
+                    R.id.profil_image -> {
+                        pickFileImage.launch("image/*")
+                        Timber.d("upload camera Succes $pickFileImage")
+                    }
+                    R.id.save_foto -> {
+                        initiateUpdateImage(token, idSiswa!!)
+                    }
+
+                    R.id.hapus_foto -> {
+                        submitDeletImage()
+                        Toast.makeText(requireContext(), "Berhasil Hapus Foto", Toast.LENGTH_SHORT)
+                            .show()
+                        Glide.with(binding.root)
+                            .load(R.drawable.bg_user_siswa)
+                            .into(binding.imgSiswa)
+                    }
+                }
+                true
+            })
+            popupMenu.show()
+        }
+    }
+
+
+    private val takePictureOnCamera =
+        registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap ->
+            if (bitmap != null) {
+                val uri = requireActivity().getImageUri(bitmap)
+                imagePath = requireActivity().getFilePathFromUri(uri)
+                binding.imgSiswa.setImageBitmap(bitmap)
+            }
+        }
+
+    private val pickFileImage =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+            if (uri != null) {
+                imagePath = requireActivity().getFilePathFromUri(uri)
+                binding.imgSiswa.setImageURI(uri)
+            }
+        }
+
+
+    fun initiateUpdateImage(
+        token: String,
+        idSiswa: Int,
+    ) {
+        if (imagePath.isNullOrEmpty()) {
+            showErrorDialog("tolong isi image terlebih dahulu")
+            return
+        }
+        viewModelImage.editImageProfile(
+            requireContext(),
+            viewLifecycleOwner,
+            token,
+            idSiswa,
+            imagePath ?: ""
+        )
+    }
+
+    private fun initiatePermission(context: Context) {
+        Dexter.withContext(context)
+            .withPermissions(
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                android.Manifest.permission.CAMERA
+            ).withListener(object : MultiplePermissionsListener {
+                override fun onPermissionsChecked(p0: MultiplePermissionsReport?) {}
+                override fun onPermissionRationaleShouldBeShown(
+                    p0: MutableList<PermissionRequest>?,
+                    p1: PermissionToken?,
+                ) {
+                    p1?.continuePermissionRequest()
+                }
+            }).withErrorListener {
+            }.onSameThread()
+            .check()
+    }
+
+    fun submitDeletImage() {
+        val keyDeletImage = "delet"
+        val deletImage = DeletImageSiswaSubmit(
+            images = keyDeletImage
+        )
+        initiateDeletImageSiswa(token, idSiswa!!, deletImage)
+        Timber.d("token $token")
+        Timber.d("idSiswa $idSiswa")
+    }
+
+
+    //delet image
+    fun initiateDeletImageSiswa(
+        token: String,
+        idSiswa: Int,
+        submitDeletImageSiswa: DeletImageSiswaSubmit,
+    ) {
+        viewModelDeletImage.deletImageSiswa(token, idSiswa, submitDeletImageSiswa)
+            .observe(viewLifecycleOwner,
+                Observer { update ->
+                    when (update) {
+                        is ApiResponseSiswa.Succes -> {
+                            Timber.d("succes update ${update.data}")
+                        }
+                        is ApiResponseSiswa.Error -> {
+                            showErrorDialogDeletImg(update.errorMessage)
+                        }
+                        else -> {
+                            Timber.d("Unknow Error")
+                        }
+                    }
+                })
+    }
+
+
+    private fun showErrorDialogDeletImg(message: String) {
+        AlertDialog.Builder(requireContext()).apply {
+            setTitle("ada kasalahan delet img")
+            setMessage(message)
+            setPositiveButton("OK") { p0, _ ->
+                p0.dismiss()
+            }
+        }.create().show()
     }
 
     private fun messageCustomDialogLogout() {
@@ -185,88 +335,6 @@ class ProfilFragment : Fragment() {
         dialog.show()
     }
 
-    private fun showErrorDialog(message: String) {
-        AlertDialog.Builder(requireContext()).apply {
-            setTitle("ada kesalahan pada saat upload image tolong periksa lagi")
-            setMessage(message)
-            setPositiveButton("OK") { p0, _ ->
-                p0.dismiss()
-            }
-        }.create().show()
-    }
-
-    private fun popMenuImg() {
-        binding.ftbEdtImg.setOnClickListener {
-            val popupMenu: PopupMenu = PopupMenu(requireContext(), binding.imgSiswa)
-            popupMenu.menuInflater.inflate(R.menu.nav_menu_img, popupMenu.menu)
-            popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { menuItem ->
-                when (menuItem.itemId) {
-                    R.id.profil_camera -> {
-                        initiateToCamera()
-                    }
-                    R.id.profil_image -> {
-                        initiateToGalery()
-                    }
-                }
-                true
-            })
-            popupMenu.show()
-        }
-    }
-
-    private fun initiateToCamera() {
-        var inten = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(inten, 123)
-
-    }
-
-    private fun initiateToGalery() {
-        val inten = Intent(Intent.ACTION_PICK)
-        inten.type = "image/*"
-        startActivityForResult(inten, 456)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 123) {
-            var bmp: Bitmap = data?.extras?.get("data") as Bitmap
-//            val submitUpdateCamera = UpdateImagesubmit(
-//                image = bmp.toString()
-//            )
-//            initiateUpdateImage(token, idSiswa!!, submitUpdateCamera)
-            binding.imgSiswa.setImageBitmap(bmp)
-        } else if (requestCode == 456) {
-//            val submitUpdateGalery = UpdateImagesubmit(
-//                image = data?.data.toString()
-//            )
-//            initiateUpdateImage(token, idSiswa!!, submitUpdateGalery)
-            binding.imgSiswa.setImageURI(data?.data)
-        }
-    }
-
-
-    fun initiateUpdateImage(
-        token: String,
-        idSiswa: Int,
-        submitImage: UpdateImagesubmit,
-    ) {
-        viewModelImage.updateImageSiswaVm(token, idSiswa, submitImage)
-            .observe(viewLifecycleOwner,
-                Observer { updateImage ->
-                    when (updateImage) {
-                        is ApiResponseSiswa.Succes -> {
-                            view?.findNavController()?.popBackStack()
-                        }
-                        is ApiResponseSiswa.Error -> {
-                            showErrorDialog(updateImage.errorMessage)
-                        }
-                        else -> {
-                            Timber.d("Unknow Error")
-                        }
-                    }
-                }
-            )
-    }
 
     override fun onDestroy() {
         super.onDestroy()

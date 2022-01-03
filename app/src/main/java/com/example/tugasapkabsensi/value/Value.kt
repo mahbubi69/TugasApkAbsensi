@@ -4,8 +4,11 @@ object Value {
     const val CHANNEL_NOTIFICATION_1 = "channel notification1"
     const val CHANNEL_NOTIFICATION_2 = "channel notification2"
 
+    const val CHANNEL_NOTIFICATION_UPLOAD = "channel notification Upload"
+
     //link rest api
-    const val BASE_URL = "https://8f18-2001-448a-5122-4845-8cf1-9900-63a3-e593.ngrok.io"
+    const val BASE_URL = "http://192.168.20.109:8080"
+    const val EDT_URL_IMG = "$BASE_URL/api/dataSiswa/updateImgSiswa/"
 
     //key shareprefens
     const val PREF_NAME = "siswaPref"

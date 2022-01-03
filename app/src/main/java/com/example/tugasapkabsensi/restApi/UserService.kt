@@ -1,9 +1,7 @@
 package com.example.tugasapkabsensi.restApi
 
-import com.example.tugasapkabsensi.restApi.model.LogInSubmitSiswa
-import com.example.tugasapkabsensi.restApi.model.UpdateImagesubmit
-import com.example.tugasapkabsensi.restApi.model.UpdateProfileSubmit
-import com.example.tugasapkabsensi.restApi.model.UpdateProsesAbsenSubmit
+import com.example.tugasapkabsensi.restApi.model.*
+import com.example.tugasapkabsensi.restApi.model.DeletImageSiswaSubmit
 import com.example.tugasapkabsensi.restApi.response.*
 import retrofit2.http.*
 
@@ -29,13 +27,14 @@ interface UserService {
         @Body submit: UpdateProfileSubmit,
     ): UpdateProfileResponse
 
-    //update img
-    @PUT("api/profileSiswa/{id_siswa}")
-    suspend fun updateImage(
+    //delet image siswa
+    @PUT("api/dataSiswa/deletImgSiswa/{id_siswa}")
+    suspend fun updateProfile(
         @Header("token") token: String,
         @Path("id_siswa") idSiswa: Int,
-        @Body submit: UpdateImagesubmit,
-    ): UpdateImageResponse
+        @Body submit: DeletImageSiswaSubmit,
+    ): DeletImageSiswaResponse
+
 
     //proses present (mapel present)
     @GET("api/dataAbsensi/{id_guru_mapel}")
