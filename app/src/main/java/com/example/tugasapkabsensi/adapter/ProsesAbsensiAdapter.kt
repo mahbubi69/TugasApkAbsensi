@@ -23,7 +23,6 @@ class ProsesAbsensiAdapter(
     PagingDataAdapter<ProsesAbsensiModel, ProsesAbsensiAdapter.ProsesAbsensiHolder>(
         DIFF_CALLBACK
     ) {
-
     inner class ProsesAbsensiHolder(private val binding: ItemPosesPresentBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -35,9 +34,19 @@ class ProsesAbsensiAdapter(
             val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ROOT)
             val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.ROOT)
             val formattedDate = formatter.format(parser.parse(dataProsesPresent.tglAbsen) ?: Date())
+            val currentTime = Calendar.getInstance().time.time
+            val parseCurrent = currentTime.toString()
             binding.tvTanggalProsesAbsensi.text = formattedDate
-            binding.tvInfoPresent.setOnClickListener { item ->
-                popMenus(item)
+            if (parseCurrent < dataProsesPresent.endTime) {
+                binding.tvInfoPresent.setOnClickListener { item ->
+                    popMenus(item)
+                }
+            }
+            if (dataProsesPresent.hasilAbsen != null) {
+                binding.tvInfoPresent.isEnabled = false
+            } else {
+                binding.tvInfoPresent.isEnabled = false
+                clikProsesPresent.updateProsesAbsen(hasilAbsen = "-")
             }
         }
 
@@ -56,7 +65,6 @@ class ProsesAbsensiAdapter(
             popupMenu.show()
         }
     }
-
 
     override fun onBindViewHolder(holder: ProsesAbsensiHolder, position: Int) {
         getItem(position)?.let { data ->

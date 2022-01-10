@@ -17,6 +17,7 @@
     <string name="loading">Loading...</string>
     <string name="support">Support By</string>
     <string name="man2stb">man 2 situbondo</string>
+    <string name="version_apk">1.0</string>
 
     <!--    navigation-->
     <string name="selamat_datang">Selamat Datang!</string>
@@ -39,6 +40,7 @@
     <string name="NISN">Nisn</string>
     <string name="nisn">12345678900</string>
     <string name="no_hp">No Hp</string>
+    <string name="nomer">084154215454</string>
     <string name="ttl">Bandung,3 Januari 2004</string>
     <string name="Alamat">Alamat</string>
     <string name="alamat">Jl.Kaliurang Timur Nomor 01</string>
@@ -98,5 +100,6 @@
 
     <!--    login message-->
     <string name="ok_login_message">Ok</string>
+    <string name="title_activity_maps">MapsActivity</string>
 
 </resources>

@@ -36,6 +36,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -124,6 +127,10 @@ dependencies {
     implementation 'com.airbnb.android:lottie:3.7.0'
 
     //library up image
-    implementation "net.gotev:uploadservice:'4.5.2'"
-    implementation "net.gotev:uploadservice-okhttp:'4.5.2'"
+    implementation "net.gotev:uploadservice:4.5.2"
+    implementation "net.gotev:uploadservice-okhttp:4.5.2"
+
+    //maps
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+    implementation 'com.google.android.libraries.places:places:2.5.0'
 }

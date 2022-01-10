@@ -34,5 +34,5 @@ data class SiswaProfilModel(
     val idKelas: Int,
 
     @SerializedName("id_admin")
-    val idJurusan: Int,
+    val idAdmin: Int,
     )

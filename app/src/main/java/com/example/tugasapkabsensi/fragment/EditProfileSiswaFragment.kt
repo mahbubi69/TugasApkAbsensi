@@ -72,6 +72,28 @@ class EditProfileSiswaFragment : Fragment() {
             password = password,
             noHp = noHp,
         )
+
+        if (nama.isEmpty()) {
+            binding.etEditNama.error = "nama harus diisi"
+            binding.etEditNama.requestFocus()
+            return
+        }
+        if (alamat.isEmpty()) {
+            binding.etEditAlamat.error = "alamat harus diisi"
+            binding.etEditAlamat.requestFocus()
+            return
+        }
+        if (password.isEmpty()) {
+            binding.etEditPassword.error = "password harus diisi"
+            binding.etEditPassword.requestFocus()
+            return
+        }
+        if (noHp.isEmpty()) {
+            binding.etEditNoHp.error = "no Hp harus diisi"
+            binding.etEditNoHp.requestFocus()
+            return
+        }
+
         initiateSubmitUpdateProfile(token, idSiswa!!, updateSiswa)
         Timber.d("token $token")
         Timber.d("idSiswa $idSiswa")

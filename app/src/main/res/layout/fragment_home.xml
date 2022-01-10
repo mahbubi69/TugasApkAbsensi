@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_grade_user"
-    tools:context=".fragment.HomeFragment">
+    tools:context=".fragment.HomeFragment"
+    android:orientation="vertical">
 
     <com.denzcoskun.imageslider.ImageSlider
         android:id="@+id/image_slider"
@@ -21,4 +22,13 @@
         app:iss_unselected_dot="@drawable/default_unselected_dot"
         tools:ignore="MissingConstraints"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_maps"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="50dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/image_maps"/>
+
+
+</LinearLayout>

@@ -7,7 +7,7 @@ object Value {
     const val CHANNEL_NOTIFICATION_UPLOAD = "channel notification Upload"
 
     //link rest api
-    const val BASE_URL = "http://192.168.20.109:8080"
+    const val BASE_URL = "https://api.absensi.jelajahin.xyz"
     const val EDT_URL_IMG = "$BASE_URL/api/dataSiswa/updateImgSiswa/"
 
     //key shareprefens

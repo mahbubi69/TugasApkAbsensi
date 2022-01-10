@@ -28,7 +28,6 @@ import com.example.tugasapkabsensi.mvvm.ProfileSiswaViewModel
 import com.example.tugasapkabsensi.mvvm.UpdateImageViewModel
 import com.example.tugasapkabsensi.restApi.model.DeletImageSiswaSubmit
 import com.example.tugasapkabsensi.restApi.model.SiswaProfilModel
-import com.example.tugasapkabsensi.restApi.model.UpdateProfileSubmit
 import com.example.tugasapkabsensi.restApi.response.ApiResponseSiswa
 import com.example.tugasapkabsensi.util.SharedPrefencSiswa
 import com.example.tugasapkabsensi.value.Value
@@ -115,6 +114,7 @@ class ProfilFragment : Fragment() {
         binding.tvNamaSiswa.text = siswa.namaSiswa
         binding.tvNisn.text = siswa.nisn
         binding.tvAlamat.text = siswa.alamat
+        binding.tvNoHp.text = siswa.noHp
 
         //parse date
         val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ROOT)

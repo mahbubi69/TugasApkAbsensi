@@ -1,10 +1,12 @@
 package com.example.tugasapkabsensi.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.tugasapkabsensi.activity.MapsActivity
 import com.example.tugasapkabsensi.databinding.FragmentHomeBinding
 import com.example.tugasapkabsensi.value.DataSliderItemHome
 
@@ -25,6 +27,11 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val dataFotoMan = DataSliderItemHome().ListFotoHomeMan()
         binding.imageSlider.setImageList(dataFotoMan)
+
+        binding.imgMaps.setOnClickListener {
+            val inten = Intent(requireContext(), MapsActivity::class.java)
+            startActivity(inten)
+        }
 
     }
 
